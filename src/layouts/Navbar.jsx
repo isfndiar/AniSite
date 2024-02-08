@@ -1,5 +1,5 @@
 import * as Icon from "react-feather";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import Button from "../components/Button/Button";
 import SideNav from "./SideNav";
 import { useState } from "react";
@@ -91,5 +91,10 @@ const ListMenu = ({ classname }) => {
 };
 
 const AuthButton = () => {
-  return <Button title={"Sign In"} />;
+  return (
+    <Link to={"/login"}>
+      {" "}
+      <Button title={"Sign In"} />
+    </Link>
+  );
 };
