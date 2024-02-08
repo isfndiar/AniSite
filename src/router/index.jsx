@@ -6,6 +6,7 @@ import RegisterPage from "../pages/register";
 import Navbar from "../layouts/Navbar";
 import Anime from "../pages/anime";
 import Manga from "../pages/manga";
+import AnimeDetail from "../pages/animes";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
         element: <Manga />,
       },
     ],
+  },
+  {
+    path: "/anime/:id",
+    element: <AnimeDetail />,
   },
   {
     path: "/login",

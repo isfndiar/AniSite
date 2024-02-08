@@ -3,31 +3,38 @@ import { NavLink, Outlet } from "react-router-dom";
 import Button from "../components/Button/Button";
 import SideNav from "./SideNav";
 import { useState } from "react";
+import { fixed, flexRes } from "./";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="flex">
-      <nav className="w-full bg-slate-800 text-white fixed right-0  top-0 py-5 pe-6 ps-[200px] flex justify-between items-center ">
+      <nav
+        className={`py-5 pe-6 lg:ps-[200px] ps-6  w-full bg-slate-800 text-white ${fixed} ${flexRes}`}
+      >
         <Seacrh />
         <ListMenu
-          classname={"md:flex sm:hidden hidden w-1/3 justify-between"}
+          classname={
+            "md:flex text-sm sm:hidden hidden  w-1/3 px-3 justify-between"
+          }
         />
         {isOpen && (
           <>
             <ListMenu
               classname={
-                "fixed flex justify-center items-center flex-col gap-3 bg-slate-700    bottom-0 top-0 left-0 right-0 z-20"
+                "w-full fixed text-3xl flex justify-center items-center flex-col gap-3 bg-slate-700    bottom-0 top-0 left-0 right-0 z-20"
               }
             />
             <button
-              className="z-30 text-2xl font-semibold "
+              className="z-30 text-3xl font-semibold  absolute right-10 top-10 "
               onClick={() => setIsOpen(false)}
             >
               X
             </button>
           </>
         )}
-        <AuthButton />
+        <div className="lg:ms-0 ms-auto md:me-0 me-3">
+          <AuthButton />
+        </div>
         <NavLink
           className={"md:hidden  flex"}
           onClick={() => setIsOpen((isOpen) => !isOpen)}
@@ -35,6 +42,7 @@ export default function Navbar() {
           <Icon.Menu />
         </NavLink>
       </nav>
+
       <SideNav zIndex={"z-10"} />
       <div className="w-full min-h-screen  bg-slate-900 mt-10">
         <Outlet />
@@ -70,7 +78,7 @@ const ListMenu = ({ classname }) => {
         Anime
       </NavLink>
       <NavLink to={"/manga"} className={setIsOpen}>
-        Read Manga
+        Manga
       </NavLink>
       <NavLink to={"/news"} className={setIsOpen}>
         News
