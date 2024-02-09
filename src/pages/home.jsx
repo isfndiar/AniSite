@@ -21,9 +21,9 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="mt-20 text-center text-white px-5  ">
+      <div className="mt-20  text-white sm:px-5   ">
         <div className=" ">Hi joe Lets talk about crypto</div>
-        <div className="flex gap-7 flex-wrap justify-center mt-10">
+        <div className="flex md:gap-7 gap-y-4 flex-wrap justify-around mt-10">
           {/* {data.map((item, i) => (
             <Link key={item.id} to={`/anime/${item.id}`}>
               <Card id={item.id} src={item.image_url} alt={"sfsa"} />

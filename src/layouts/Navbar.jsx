@@ -6,43 +6,59 @@ import { useState } from "react";
 import { fixed, flexRes } from "./";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isClick, setIsClick] = useState(false);
   return (
     <div className="flex">
       <nav
-        className={`py-5 pe-6 lg:ps-[200px] ps-6  w-full bg-slate-800 text-white ${fixed} ${flexRes}`}
+        className={`py-5 pe-6 lg:ps-[200px] ps-6  w-full bg-slate-800 text-white ${fixed}  z-50`}
       >
-        <Seacrh />
-        <ListMenu
-          classname={
-            "md:flex text-sm sm:hidden hidden  w-1/3 px-3 justify-between"
-          }
-        />
-        {isOpen && (
-          <>
-            <ListMenu
-              classname={
-                "w-full fixed text-3xl flex justify-center items-center flex-col gap-3 bg-slate-700    bottom-0 top-0 left-0 right-0 z-20"
-              }
-            />
-            <button
-              className="z-30 text-3xl font-semibold  absolute right-10 top-10 "
-              onClick={() => setIsOpen(false)}
-            >
-              X
-            </button>
-          </>
+        {isClick && (
+          <Seacrh
+            classIcon={`hidden`}
+            classSearch={`flex justify-between  items-center bg-slate-900 px-2 py-1 rounded-xl w-full mb-5 transition-all`}
+          />
         )}
-        <div className="lg:ms-0 ms-auto md:me-0 me-3">
-          <AuthButton />
+        <div className={`${flexRes} w-full`}>
+          <Logo />
+          <Seacrh
+            classIcon={"inline-block"}
+            classSearch={
+              "hidden sm:flex justify-between  items-center bg-slate-900 px-2 py-1 rounded-xl w-[45%]"
+            }
+            handleClick={() => setIsClick((isClick) => !isClick)}
+          />
+          <ListMenu
+            classname={"md:flex text-sm  hidden  w-1/3 px-3 justify-between"}
+          />
+          {isOpen && (
+            <>
+              <ListMenu
+                classname={
+                  "w-full fixed text-3xl flex justify-center items-center flex-col gap-3 bg-slate-700    bottom-0 top-0 left-0 right-0 z-20"
+                }
+              />
+              <button
+                className="z-30 text-3xl font-semibold  absolute right-10 top-10 "
+                onClick={() => setIsOpen(false)}
+              >
+                X
+              </button>
+            </>
+          )}
+          <div className="lg:ms-0 ms-auto md:me-0 me-3">
+            <AuthButton />
+          </div>
+
+          <NavLink
+            className={"md:hidden  flex"}
+            onClick={() => setIsOpen((isOpen) => !isOpen)}
+          >
+            <Icon.Menu />
+          </NavLink>
         </div>
-        <NavLink
-          className={"md:hidden  flex"}
-          onClick={() => setIsOpen((isOpen) => !isOpen)}
-        >
-          <Icon.Menu />
-        </NavLink>
       </nav>
 
+      {/* side Nav */}
       <SideNav zIndex={"z-10"} />
       <div className="w-full min-h-screen  bg-slate-900 mt-10">
         <Outlet />
@@ -51,16 +67,30 @@ export default function Navbar() {
   );
 }
 
-const Seacrh = () => {
+const Logo = () => {
   return (
-    <div className="flex justify-between  items-center bg-slate-900 px-2 py-1 rounded-xl w-[45%]">
-      <input
-        type="text"
-        className="border-none w-full bg-transparent text-white placeholder:text-white py-1 px-1 outline-none "
-        placeholder="Seacrh"
-      />
-      <Icon.Search className="w-4" />{" "}
-    </div>
+    <Link className="ms-2 text-3xl w-1/2 sm:hidden inline-block" to={"/"}>
+      Ani Site
+    </Link>
+  );
+};
+
+const Seacrh = ({ handleClick, classSearch, classIcon }) => {
+  return (
+    <>
+      <div className={`${classSearch}`}>
+        <input
+          type="text"
+          className="border-none w-full bg-transparent text-white placeholder:text-white py-1 px-1 outline-none "
+          placeholder="Seacrh"
+        />
+        <Icon.Search className="w-4" />{" "}
+      </div>
+      <Icon.Search
+        onClick={handleClick}
+        className={`${classIcon} sm:hidden cursor-pointer`}
+      ></Icon.Search>
+    </>
   );
 };
 
