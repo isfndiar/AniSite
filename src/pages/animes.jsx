@@ -6,12 +6,12 @@ export default function AnimeDetail() {
   const [data, setData] = useState({});
   const { id } = useParams();
 
-  useEffect(() => {
-    getAnimeDetail(id, (res) => setData(res));
-  }, [id]);
+  // useEffect(() => {
+  //   getAnimeDetail(id, (res) => setData(res));
+  // }, [id]);
   return (
     <div className=" text-black">
-      <img src={data.image_url} alt="" />
+      <img src={"image1.png"} alt="" />
     </div>
   );
 }

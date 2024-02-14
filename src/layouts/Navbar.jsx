@@ -60,7 +60,7 @@ export default function Navbar() {
 
       {/* side Nav */}
       <SideNav zIndex={"z-10"} />
-      <div className="w-full min-h-screen  bg-slate-900 mt-10">
+      <div className="w-full min-h-screen bg-slate-900 mt-10">
         <Outlet />
       </div>
     </div>
