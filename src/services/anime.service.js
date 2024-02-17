@@ -29,3 +29,30 @@ export const getAnimeDetail = (id, callback) => {
 
   getData();
 };
+
+export const createApiAnime = [
+  {
+    id: 0,
+    title: `jujutsu kaisen`,
+    year: 2014,
+    rating: 9.0,
+    desc: "this anime is suc",
+    imgUrl: "image1.jpg",
+  },
+  {
+    id: 1,
+    title: `Bleach`,
+    year: 2000,
+    rating: 9.0,
+    desc: "Menyala abangkuh",
+    imgUrl: "image2.jpg",
+  },
+  {
+    id: 2,
+    title: `Boruto`,
+    year: 2018,
+    rating: 4.5,
+    desc: "Boruto is a spin-off and a sequel to Kishimoto's Naruto and follows the exploits of Naruto Uzumaki's son, Boruto Uzumaki, and his ninja team",
+    imgUrl: "image3.jpg",
+  },
+];

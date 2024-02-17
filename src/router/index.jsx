@@ -6,8 +6,7 @@ import RegisterPage from "../pages/register";
 import Navbar from "../layouts/Navbar";
 import Anime from "../pages/anime";
 import Manga from "../pages/manga";
-import AnimeDetail from "../pages/animes";
-import Testing from "../pages/_test/_testing";
+import AnimeDetail from "../pages/AnimeDetail";
 
 export const router = createBrowserRouter([
   {
@@ -40,9 +39,5 @@ export const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
-  },
-  {
-    path: "/testing",
-    element: <Testing />,
   },
 ]);

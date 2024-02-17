@@ -11,7 +11,7 @@ export default function AnimeDetail() {
   // }, [id]);
   return (
     <div className=" text-black">
-      <img src={"image1.png"} alt="" />
+      <img src={"image1.jpg"} alt="" />
     </div>
   );
 }
