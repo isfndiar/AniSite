@@ -1,28 +1,35 @@
-import { useEffect } from "react";
+import { Suspense, useEffect, lazy } from "react";
 import { getApiAnime } from "../services/anime.service";
 import { useState } from "react";
 import Image from "../components/Card/Image";
 import Card from "../components/Card";
 import { Link } from "react-router-dom";
 import SliderComponents from "../components/slider";
-import CardText from "../components/Card_text/CardText";
 import * as Icon from "react-feather";
+import CardLoader from "../Loader/CardLoader";
+const CardText = lazy(() => import("../components/Card_text/CardText"));
 const HomePage = () => {
   const [ImageData, setImageData] = useState([]);
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [istest, setIsTest] = useState(
     Array(20)
       .fill()
       .map((_, i) => i + 1)
   );
 
+  // Get ApI
   useEffect(() => {
     getApiAnime((res) => setData(res));
   }, [istest]);
 
+  // Test loader
   useEffect(() => {
-    // console.log(data);
-  }, [data]);
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
 
   return (
     <>
@@ -32,10 +39,14 @@ const HomePage = () => {
         {/* <Main istest={istest} /> */}
         <div className="md:flex items-start  md:px-3 px-3   mt-10   ">
           <div className="grid md:grid-cols-2  grid-cols-1 gap-y-3  w-full ">
-            <CardText />
-            <CardText />
-            <CardText />
-            <CardText />
+            {Array(4)
+              .fill()
+              .map((_, i) => (
+                <Suspense fallback={<CardLoader />} key={i}>
+                  {" "}
+                  <CardText />
+                </Suspense>
+              ))}
           </div>
           <LatestNews />
         </div>
