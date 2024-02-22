@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../components/Logo";
+import * as Icon from "react-feather";
 
 export default function Aside({ zIndex, isOpen }) {
   return (
@@ -19,13 +20,68 @@ export default function Aside({ zIndex, isOpen }) {
 }
 
 const Main = () => {
+  const setIsOpen = ({ isActive, isPending }) => {
+    return isActive
+      ? "bg-purple-500 px-2 py-2 rounded-md"
+      : isPending
+      ? ""
+      : "px-2 py-2";
+  };
   return (
-    <div className="visible">
-      {Array(40)
+    <div className="visible flex flex-col mt-5 gap-5  text-sm">
+      {/* {Array(40)
         .fill()
         .map((_, i) => (
           <p key={i}>hai</p>
-        ))}
+        ))} */}
+      <NavLink
+        to={"/"}
+        className={`${setIsOpen} flex gap-3   rounded-lg mx-7 `}
+      >
+        <Icon.User size={20} /> Profile
+      </NavLink>
+      <NavLink
+        to={"/anime"}
+        className={`${setIsOpen} flex rounded-lg mx-7 gap-3 `}
+      >
+        <Icon.File size={20} /> Genres
+      </NavLink>
+      <NavLink
+        to={"/about"}
+        className={`${setIsOpen} flex rounded-lg mx-7 gap-3 `}
+      >
+        <Icon.FileText size={20} /> MyList <Icon.ArrowDown />
+      </NavLink>
+      <NavLink
+        to={"/return"}
+        className={`${setIsOpen} flex rounded-lg mx-7 gap-3 `}
+      >
+        <Icon.Download size={20} /> Download
+      </NavLink>
+      <NavLink
+        to={"/homee"}
+        className={`${setIsOpen} flex rounded-lg mx-7 gap-3 `}
+      >
+        <Icon.Heart size={20} /> Favorite
+      </NavLink>
+      <NavLink
+        to={"/homee"}
+        className={`${setIsOpen} flex rounded-lg mx-7 gap-3 `}
+      >
+        <Icon.Grid size={20} /> Global evaluation
+      </NavLink>
+      <NavLink
+        to={"/homee"}
+        className={`${setIsOpen} flex rounded-lg mx-7 gap-3 `}
+      >
+        <Icon.Calendar size={20} /> Episode Dates
+      </NavLink>
+      <NavLink
+        to={"/homee"}
+        className={`${setIsOpen} flex rounded-lg mx-7 gap-3 `}
+      >
+        <Icon.Settings size={20} /> Setting
+      </NavLink>
     </div>
   );
 };
