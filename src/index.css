@@ -20,3 +20,5 @@
 .bg_opacity-image {
   @apply z-0 absolute left-0 right-0 top-0 bottom-0 bg-black opacity-0;
 }
+
+/* Layouts css */

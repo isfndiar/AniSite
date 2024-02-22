@@ -1,25 +1,31 @@
 import * as Icon from "react-feather";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import Button from "../components/Button/Button";
-import SideNav from "./SideNav";
+import Aside from "./Aside";
 import { useState } from "react";
 import { fixed, flexRes } from "./";
+import Logo from "../components/Logo";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isClick, setIsClick] = useState(false);
   return (
     <div className="flex">
       <nav
-        className={`py-5 pe-6 lg:ps-[200px] ps-6  w-full bg-slate-800 text-white ${fixed}  z-50`}
+        className={`py-5 pe-6 lg:ps-[200px] ps-6 w-full lg:max-w-[96%]  bg-slate-800 text-white ${fixed}  z-50`}
       >
+        {/* Search Input */}
         {isClick && (
           <Seacrh
             classIcon={`hidden`}
             classSearch={`flex justify-between  items-center bg-slate-900 px-2 py-1 rounded-xl w-full mb-5 transition-all`}
           />
         )}
+        {/* START */}
         <div className={`${flexRes} w-full`}>
-          <Logo />
+          <Logo
+            classname="ms-2 text-3xl w-1/2 sm:hidden inline-block"
+            to={"/"}
+          />
           <Seacrh
             classIcon={"inline-block"}
             classSearch={
@@ -30,6 +36,8 @@ export default function Navbar() {
           <ListMenu
             classname={"md:flex text-sm  hidden  w-1/3 px-3 justify-between"}
           />
+
+          {/* Navbar-List menu open start*/}
           {isOpen && (
             <>
               <ListMenu
@@ -45,6 +53,8 @@ export default function Navbar() {
               </button>
             </>
           )}
+          {/* Navbar-List  menu end */}
+
           <div className="lg:ms-0 ms-auto md:me-0 me-3">
             <AuthButton />
           </div>
@@ -56,24 +66,17 @@ export default function Navbar() {
             <Icon.Menu />
           </NavLink>
         </div>
+        {/* END */}
       </nav>
 
       {/* side Nav */}
-      <SideNav zIndex={"z-10"} />
-      <div className="w-full min-h-screen bg-slate-900 mt-10">
+      <Aside zIndex={"z-[99]"} />
+      <div className="w-full min-h-screen bg-slate-900 mt-10 lg:ml-[16%] ml-0 ">
         <Outlet />
       </div>
     </div>
   );
 }
-
-const Logo = () => {
-  return (
-    <Link className="ms-2 text-3xl w-1/2 sm:hidden inline-block" to={"/"}>
-      Ani Site
-    </Link>
-  );
-};
 
 const Seacrh = ({ handleClick, classSearch, classIcon }) => {
   return (
