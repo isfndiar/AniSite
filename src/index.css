@@ -7,15 +7,6 @@
   --primary: #000000;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
-  background-color: rgb(50, 48, 51);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #3c424e;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -31,3 +22,21 @@
 }
 
 /* Layouts css */
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: rgb(50, 48, 51);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3c424e;
+}
+
+.scroll-purple::-webkit-scrollbar-thumb {
+  background-color: purple;
+}
+
+.scroll-purple::-webkit-scrollbar {
+  width: 5px;
+  background: #3c424e;
+}
