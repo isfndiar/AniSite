@@ -33,12 +33,12 @@ const HomePage = () => {
 
   return (
     <>
-      <div className=" mt-16  text-white sm:px-5 py-1     ">
+      <div className=" mt-16  text-white sm:px-5 py-1      ">
         <SliderComponents content={istest} />
-        <h2 className="text-2xl font-bold mt-20 px-3">Continue Watching</h2>
+        <h2 className="text-2xl font-bold mt-20 ps-3  ">Continue Watching</h2>
         {/* <Main istest={istest} /> */}
-        <div className="md:flex items-start  md:px-3 px-3   mt-10   ">
-          <div className="grid md:grid-cols-2  grid-cols-1 gap-y-3  w-full ">
+        <div className="md:flex gap-x-3 items-start  px-3 mt-10 ">
+          <div className="grid sm:grid-cols-2 gap-x-2 grid-cols-1 gap-y-3  w-full   ">
             {Array(4)
               .fill()
               .map((_, i) => (
@@ -55,29 +55,11 @@ const HomePage = () => {
   );
 };
 
-const Main = (prop) => {
-  const { istest } = prop;
-  return (
-    <div className="flex md:gap-7 gap-y-4 flex-wrap justify-around mt-10 ">
-      {/* {data.map((item, i) => (
-            <Link key={item.id} to={`/anime/${item.id}`}>
-              <Card id={item.id} src={item.image_url} alt={"sfsa"} />
-            </Link>
-          ))} */}
-      {istest.map((_, i) => (
-        <Link key={i + crypto.randomUUID()} to={`/anime/${i}`}>
-          <Card id={i} src={"./src/assets/bgAuth.png"} alt={"sfsa"} />
-        </Link>
-      ))}
-    </div>
-  );
-};
-
 const LatestNews = () => {
   const [isOpen, setIsOpen] = useState(true);
   return (
     <div className=" bg-slate-800  py-5 px-3 text-center hidden md:inline-block  w-4/12 rounded-3xl">
-      <h1 className="text-white  bg-purple-800 font-semibold  px-14 py-3 inline-block rounded-md mb-10 pointer-events-none">
+      <h1 className="text-white  bg-purple-800 font-semibold  px-10 py-4 inline-block rounded-md mb-10 pointer-events-none">
         Latest News
       </h1>
       <div className="flex text-xl text-left px-2 items-start">
@@ -112,3 +94,22 @@ const LatestNews = () => {
 };
 
 export default HomePage;
+
+// Test
+const Main = (prop) => {
+  const { istest } = prop;
+  return (
+    <div className="flex md:gap-7 gap-y-4 flex-wrap justify-around mt-10 ">
+      {/* {data.map((item, i) => (
+            <Link key={item.id} to={`/anime/${item.id}`}>
+              <Card id={item.id} src={item.image_url} alt={"sfsa"} />
+            </Link>
+          ))} */}
+      {istest.map((_, i) => (
+        <Link key={i + crypto.randomUUID()} to={`/anime/${i}`}>
+          <Card id={i} src={"./src/assets/bgAuth.png"} alt={"sfsa"} />
+        </Link>
+      ))}
+    </div>
+  );
+};

@@ -5,17 +5,19 @@ import SliderLoader from "../../Loader/SliderLoader";
 import * as Icon from "react-feather";
 const SliderComponents = ({ content }) => {
   return (
-    <div className="h-56 sm:h-64 xl:h-[26rem]  w-full md:px-20 px-5 ">
-      <Carousel
-        indicators={false}
-        onSlideChange={(index) => console.log("onSlideChange()", index)}
-      >
-        {createApiAnime.map((item, i) => (
-          <Suspense key={i + crypto.randomUUID()} fallback={<SliderLoader />}>
-            <Img item={item} />
-          </Suspense>
-        ))}
-      </Carousel>
+    <>
+      <div className="h-56 sm:h-64 xl:h-[26rem]  w-full md:px-20 px-5  ">
+        <Carousel
+          indicators={false}
+          onSlideChange={(index) => console.log("onSlideChange()", index)}
+        >
+          {createApiAnime.map((item, i) => (
+            <Suspense key={i + crypto.randomUUID()} fallback={<SliderLoader />}>
+              <Img item={item} />
+            </Suspense>
+          ))}
+        </Carousel>
+      </div>
       <div className="flex justify-center mt-10">
         <Button>Favorite</Button>
         <Button style={`flex bg-purple-800 items-center justify-center gap-2`}>
@@ -24,7 +26,7 @@ const SliderComponents = ({ content }) => {
 
         <Button>Learn more</Button>
       </div>
-    </div>
+    </>
   );
 };
 
