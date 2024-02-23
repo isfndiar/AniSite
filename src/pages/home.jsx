@@ -33,7 +33,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="mt-20  text-white sm:px-5 py-1     ">
+      <div className=" mt-16  text-white sm:px-5 py-1     ">
         <SliderComponents content={istest} />
         <h2 className="text-2xl font-bold mt-20 px-3">Continue Watching</h2>
         {/* <Main istest={istest} /> */}
@@ -86,7 +86,7 @@ const LatestNews = () => {
           onClick={() => setIsOpen((isOpen) => !isOpen)}
           className="outline-none"
         >
-          <Icon.ArrowUp
+          <Icon.ChevronUp
             className={`${isOpen ? "rotate-180" : "rotate-0"} transition-all`}
           />
         </button>

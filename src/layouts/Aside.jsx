@@ -52,8 +52,9 @@ const Main = () => {
           }
         >
           <Icon.FileText size={20} /> MyList{" "}
-          <Icon.ArrowDown
-            className={`transition-all ${isClick ? "" : "rotate-180"} `}
+          <Icon.ChevronDown
+            size={16}
+            className={`transition-all ${isClick ? "" : "rotate-180  "} `}
           />
         </NavLink>
         {isClick && (

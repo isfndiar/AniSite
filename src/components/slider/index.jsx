@@ -2,9 +2,10 @@ import React, { Suspense, lazy, useEffect, useRef } from "react";
 import { Carousel } from "flowbite-react";
 import { createApiAnime } from "../../services/anime.service";
 import SliderLoader from "../../Loader/SliderLoader";
+import * as Icon from "react-feather";
 const SliderComponents = ({ content }) => {
   return (
-    <div className="h-56 sm:h-64 xl:h-[26rem]  w-full md:px-20 px-5">
+    <div className="h-56 sm:h-64 xl:h-[26rem]  w-full md:px-20 px-5 ">
       <Carousel
         indicators={false}
         onSlideChange={(index) => console.log("onSlideChange()", index)}
@@ -15,6 +16,14 @@ const SliderComponents = ({ content }) => {
           </Suspense>
         ))}
       </Carousel>
+      <div className="flex justify-center mt-10">
+        <Button>Favorite</Button>
+        <Button style={`flex bg-purple-800 items-center justify-center gap-2`}>
+          <Icon.Play size={15} /> Watch now
+        </Button>
+
+        <Button>Learn more</Button>
+      </div>
     </div>
   );
 };
@@ -30,6 +39,12 @@ const Img = ({ item }) => {
         </p>
       </div>
     </div>
+  );
+};
+
+const Button = ({ children, style }) => {
+  return (
+    <button className={`px-10 rounded-lg py-2  ${style}`}>{children}</button>
   );
 };
 
