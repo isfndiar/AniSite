@@ -35,7 +35,7 @@ const HomePage = () => {
       <div className=" mt-16  text-white sm:px-5 py-1      ">
         <SliderComponents content={istest} />
         <h2 className="text-2xl font-bold mt-20 ps-3  ">Continue Watching</h2>
-        {/* <Main istest={istest} /> */}
+        {/* <Main istest={istest} data={data} /> */}
         <div className="md:flex gap-x-3 items-start  px-3 mt-10 ">
           <div className="w-full">
             <div className="grid sm:grid-cols-2 gap-x-2 grid-cols-1 gap-y-3   w-full  ">
@@ -77,14 +77,14 @@ export default HomePage;
 
 // Test
 const Main = (prop) => {
-  const { istest } = prop;
+  const { istest, data } = prop;
   return (
     <div className="flex md:gap-7 gap-y-4 flex-wrap justify-around mt-10 ">
       {/* {data.map((item, i) => (
-            <Link key={item.id} to={`/anime/${item.id}`}>
-              <Card id={item.id} src={item.image_url} alt={"sfsa"} />
-            </Link>
-          ))} */}
+        <Link key={item.id} to={`/anime/${item.id}`}>
+          <Card id={item.id} src={item.image_url} alt={"sfsa"} />
+        </Link>
+      ))} */}
       {istest.map((_, i) => (
         <Link key={i + crypto.randomUUID()} to={`/anime/${i}`}>
           <Card id={i} src={"./src/assets/bgAuth.png"} alt={"sfsa"} />
