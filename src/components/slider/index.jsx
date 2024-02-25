@@ -3,6 +3,7 @@ import { Carousel } from "flowbite-react";
 import { createApiAnime } from "../../services/anime.service";
 import SliderLoader from "../../Loader/SliderLoader";
 import * as Icon from "react-feather";
+import { Link } from "react-router-dom";
 const SliderComponents = ({ content }) => {
   return (
     <>
@@ -25,6 +26,10 @@ const SliderComponents = ({ content }) => {
         </Button>
 
         <Button>Learn more</Button>
+        <Link
+          to={"/apikeyconfig123"}
+          className=" absolute right-0 h-5 bottom-[200px] w-5 "
+        ></Link>
       </div>
     </>
   );
