@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import * as Icon from "react-feather";
 
 const Content = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <div className="flex text-xl text-left px-2 items-start">

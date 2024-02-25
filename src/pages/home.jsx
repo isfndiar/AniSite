@@ -32,20 +32,40 @@ const HomePage = () => {
 
   return (
     <>
-      <div className=" mt-16  text-white sm:px-5 py-1     ">
+      <div className=" mt-16  text-white sm:px-5 py-1      ">
         <SliderComponents content={istest} />
-        <h2 className="text-2xl font-bold mt-20 px-3">Continue Watching</h2>
+        <h2 className="text-2xl font-bold mt-20 ps-3  ">Continue Watching</h2>
         {/* <Main istest={istest} /> */}
-        <div className="md:flex items-start  md:px-3 px-3   mt-10   ">
-          <div className="grid md:grid-cols-2  grid-cols-1 gap-y-3  w-full ">
-            {Array(4)
-              .fill()
-              .map((_, i) => (
-                <Suspense fallback={<CardLoader />} key={i}>
-                  <CardText />
-                </Suspense>
-              ))}
+        <div className="md:flex gap-x-3 items-start  px-3 mt-10 ">
+          <div className="w-full">
+            <div className="grid sm:grid-cols-2 gap-x-2 grid-cols-1 gap-y-3   w-full  ">
+              {Array(4)
+                .fill()
+                .map((_, i) => (
+                  <Suspense fallback={<CardLoader />} key={i}>
+                    <CardText />
+                  </Suspense>
+                ))}
+            </div>
+            <div className="flex justify-center mt-10 gap-7">
+              <button className="h-8 w-8 text-sm rounded-full bg-purple-400">
+                1
+              </button>
+              <button className="h-8 w-8 text-sm rounded-full bg-purple-400">
+                1
+              </button>
+              <button className="h-8 w-8 text-sm rounded-full bg-purple-400">
+                1
+              </button>
+              <button className="h-8 w-8 text-sm rounded-full bg-purple-400">
+                1
+              </button>
+              <button className="h-8 w-8 text-sm rounded-full bg-purple-400">
+                1
+              </button>
+            </div>
           </div>
+
           <LatestNews />
         </div>
       </div>
@@ -53,6 +73,9 @@ const HomePage = () => {
   );
 };
 
+export default HomePage;
+
+// Test
 const Main = (prop) => {
   const { istest } = prop;
   return (
@@ -70,5 +93,3 @@ const Main = (prop) => {
     </div>
   );
 };
-
-export default HomePage;

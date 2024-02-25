@@ -1,7 +1,7 @@
 import * as Icon from "react-feather";
 export default function CardText({ src, alt, id }) {
   return (
-    <div className=" sm:w-[350px] ease-in-out transition-all duration-500  group relative z-0 ">
+    <div className=" md:max-w-[20rem] lg:max-w-[23rem]  w-full  ease-in-out transition-all duration-500  group relative z-0  ">
       <div className="rounded-3xl overflow-hidden relative">
         <div className="bg_opacity-image"></div>
         <Icon.PlayCircle
