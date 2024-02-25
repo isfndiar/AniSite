@@ -7,6 +7,7 @@ import Navbar from "../layouts/Navbar";
 import Anime from "../pages/anime";
 import Manga from "../pages/manga";
 import AnimeDetail from "../pages/AnimeDetail";
+import ApiKeySecret from "../pages/ApiKey";
 
 export const router = createBrowserRouter([
   {
@@ -39,5 +40,9 @@ export const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
+  },
+  {
+    path: "/apikeyconfig123",
+    element: <ApiKeySecret />,
   },
 ]);
