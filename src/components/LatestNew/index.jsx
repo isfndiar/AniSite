@@ -10,6 +10,9 @@ const LatestNews = () => {
         <Content />
         <Content />
         <Content />
+        <Content />
+        <Content />
+        <Content />
       </div>
     </div>
   );

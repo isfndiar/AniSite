@@ -4,12 +4,6 @@ import * as Icon from "react-feather";
 import { useState } from "react";
 
 export default function Aside({ zIndex, isOpen }) {
-  const setIsOpen = ({ isActive, isPending }) =>
-    isActive
-      ? "bg-purple-500 px-2 py-2 rounded-md"
-      : isPending
-      ? ""
-      : "px-2 py-2";
   return (
     <div
       className={`${zIndex} ${
@@ -19,7 +13,7 @@ export default function Aside({ zIndex, isOpen }) {
       <div className="sticky top-0 left-0 right-0 bg-slate-800 pb-10 py-5 w-full  ">
         <Logo to={"/"} classname="  text-center   " />
       </div>
-      <Main setIsOpen={setIsOpen} />
+      <Main />
     </div>
   );
 }
