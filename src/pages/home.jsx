@@ -104,7 +104,7 @@ const Main = (prop) => {
           <Card
             key={i + crypto.randomUUID()}
             id={i}
-            src={"./src/assets/bgAuth.png"}
+            src={"./assets/bgAuth.png"}
             alt={"sfsa"}
           />
         ))}
