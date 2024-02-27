@@ -35,7 +35,6 @@ const HomePage = () => {
       <div className=" mt-16  text-white sm:px-5 py-1      ">
         <SliderComponents content={istest} />
         <h2 className="text-2xl font-bold mt-20 ps-3  ">Continue Watching</h2>
-        {/* <Main istest={istest} data={data} /> */}
         <div className="md:flex gap-x-3 items-start  px-3 mt-10 ">
           <div className="w-full">
             <div className="grid sm:grid-cols-2 gap-x-2 grid-cols-1 gap-y-3   w-full  ">
