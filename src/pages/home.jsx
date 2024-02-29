@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 import SliderComponents from "../components/slider";
 import CardLoader from "../Loader/CardLoader";
 import LatestNews from "../components/LatestNew";
+import { getAnimeContinueWatching } from "../services/animelist.service";
 const CardText = lazy(() => import("../components/Card_text/CardText"));
 const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [dataAnimeWatching, setDataAnimeContinue] = useState([]);
   const [istest, setIsTest] = useState(
     Array(8)
       .fill()
@@ -18,13 +19,12 @@ const HomePage = () => {
 
   // Get ApI
   useEffect(() => {
-    getApiAnime(
-      (res) => setData(res),
-      (message) => {
-        console.log(message);
-      }
-    );
+    getAnimeContinueWatching((res) => setDataAnimeContinue(res.data.data));
   }, []);
+
+  useEffect(() => {
+    console.log(dataAnimeWatching);
+  }, [dataAnimeWatching]);
 
   // Test loader
   useEffect(() => {
@@ -37,18 +37,21 @@ const HomePage = () => {
   return (
     <>
       <div className=" mt-16  text-white sm:px-5 py-1      ">
-        <SliderComponents content={istest} />
+        <SliderComponents />
         <Header>Continue Watching</Header>
         <div className="md:flex gap-x-3 items-start  px-3 mt-10 ">
           <div className="w-full">
             <div className="grid sm:grid-cols-2 gap-x-2 grid-cols-1 gap-y-3   w-full  ">
-              {Array(4)
-                .fill()
-                .map((_, i) => (
-                  <Suspense fallback={<CardLoader />} key={i}>
-                    <CardText />
-                  </Suspense>
-                ))}
+              {dataAnimeWatching.map((item) => (
+                <Suspense fallback={<CardLoader />} key={item.mal_id}>
+                  <CardText
+                    src={item.trailer.images.image_url}
+                    alt={item.title}
+                    title={item.title}
+                    episode={item.episodes}
+                  />
+                </Suspense>
+              ))}
             </div>
             <Pagination />
             <RecentlyUpdate istest={istest} />
