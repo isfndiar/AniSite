@@ -7,7 +7,7 @@ import { getAnime } from "../../services/animelist.service";
 const SliderComponents = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    getAnime((res) => setData(res));
+    // getAnime((res) => setData(res));
   }, []);
   return (
     <>
@@ -16,7 +16,7 @@ const SliderComponents = () => {
           indicators={false}
           // onSlideChange={(index) => console.log("onSlideChange()", index)}
         >
-          {data.map((item, i) => (
+          {getAnime.map((item, i) => (
             <Suspense key={item.node.id} fallback={<SliderLoader />}>
               <Img item={item} />
             </Suspense>
