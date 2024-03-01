@@ -1,7 +1,7 @@
 import Image from "./Image";
 import * as Icon from "react-feather";
 
-export default function Card({ src, alt, id }) {
+export default function Card({ src, alt, score, title, episodes }) {
   return (
     <div className=" w-full max-w-[170px] ease-in-out transition-all duration-500 rounded-3xl  group relative z-0">
       <Image
@@ -13,12 +13,12 @@ export default function Card({ src, alt, id }) {
         {/* <div className=" bg_opacity-black"></div> */}
       </div>
       <div className="flex flex-col">
-        <h1 className="text-md font-semibold">Jujutsu Kaisen</h1>
+        <h1 className="text-md font-semibold">{title.substring(0, 20)}...</h1>
         <p className="flex justify-between items-center text-sm">
-          Episode 12
+          {episodes} episode
           <span className="flex items-center">
             <Icon.Star color="yellow" fill="yellow" size={12} />
-            8.17
+            {score}
           </span>
         </p>
       </div>

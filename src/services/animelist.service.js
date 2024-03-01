@@ -18,14 +18,16 @@ export const getAnimeContinueWatching = async (callback) => {
   }
 };
 
-// export const getAnime = async (callback) => {
-//   try {
-//     const res = await axios.get("https://api.jikan.moe/v4/anime?q=frierien");
-//     callback(res.data.data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+export const getAnimeRecently = async (callback) => {
+  try {
+    const res = await axios.get(
+      "https://api.jikan.moe/v4/anime?q=jujutsu+kaisen"
+    );
+    callback(res.data.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const getAnime = [
   {

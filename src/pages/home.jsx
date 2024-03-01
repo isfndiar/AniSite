@@ -6,7 +6,10 @@ import { Link } from "react-router-dom";
 import SliderComponents from "../components/slider";
 import CardLoader from "../Loader/CardLoader";
 import LatestNews from "../components/LatestNew";
-import { getAnimeContinueWatching } from "../services/animelist.service";
+import {
+  getAnimeContinueWatching,
+  getAnimeRecently,
+} from "../services/animelist.service";
 const CardText = lazy(() => import("../components/Card_text/CardText"));
 const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -103,16 +106,22 @@ const RecentlyUpdate = ({ istest }) => {
 
 // Test
 const Main = (prop) => {
-  const { istest } = prop;
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    getAnimeRecently((res) => setData(res));
+  }, []);
   return (
     <>
       <div className="flex flex-wrap gap-x-5 gap-y-10   mt-10 ">
-        {istest.map((_, i) => (
+        {data.map((item, i) => (
           <Card
-            key={i + crypto.randomUUID()}
+            key={item.mal_id}
             id={i}
-            src={"bgAuth.png"}
-            alt={"sfsa"}
+            src={item.images.jpg.image_url}
+            alt={item.title}
+            title={item.title}
+            episodes={item.episodes}
+            score={item.score}
           />
         ))}
       </div>
