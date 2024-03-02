@@ -1,34 +1,16 @@
 import { Suspense, useEffect, lazy } from "react";
-import { getApiAnime } from "../services/anime.service";
 import { useState } from "react";
-import Card from "../components/Card";
-import { Link } from "react-router-dom";
 import SliderComponents from "../components/slider";
 import CardLoader from "../Loader/CardLoader";
 import LatestNews from "../components/LatestNew";
-import {
-  getAnimeContinueWatching,
-  getAnimeRecently,
-} from "../services/animelist.service";
+import { getAnimeContinueWatching } from "../services/animelist.service";
+import Pagination from "../components/Pagination/Pagination";
+import RecentlyUpdate from "../components/RecentlyUpdate/RecentlyUpdate";
+import Header from "../components/Header";
 const CardText = lazy(() => import("../components/Card_text/CardText"));
+
 const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [dataAnimeWatching, setDataAnimeContinue] = useState([]);
-  const [istest, setIsTest] = useState(
-    Array(8)
-      .fill()
-      .map((_, i) => i + 1)
-  );
-
-  // Get ApI
-  useEffect(() => {
-    getAnimeContinueWatching((res) => setDataAnimeContinue(res.data.data));
-  }, []);
-
-  useEffect(() => {
-    console.log(dataAnimeWatching);
-  }, [dataAnimeWatching]);
-
   // Test loader
   useEffect(() => {
     setIsLoading(true);
@@ -38,116 +20,41 @@ const HomePage = () => {
   }, []);
 
   return (
-    <>
-      <div className=" mt-16  text-white sm:px-5 py-1      ">
-        <SliderComponents />
-        <Header>Continue Watching</Header>
-        <div className="md:flex gap-x-3 items-start  px-3 mt-10 ">
-          <div className="w-full">
-            <div className="grid sm:grid-cols-2 gap-x-2 grid-cols-1 gap-y-3   w-full  ">
-              {dataAnimeWatching.map((item) => (
-                <Suspense fallback={<CardLoader />} key={item.mal_id}>
-                  <CardText
-                    src={item.trailer.images.image_url}
-                    alt={item.title}
-                    title={item.title}
-                    episode={item.episodes}
-                  />
-                </Suspense>
-              ))}
-            </div>
-            <Pagination />
-            <RecentlyUpdate istest={istest} />
-          </div>
-          <LatestNews />
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default HomePage;
-
-const Header = ({ children }) => (
-  <h2 className="text-2xl font-bold mt-20 ps-3  ">{children}</h2>
-);
-
-const RecentlyUpdate = ({ istest }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  return (
-    <div className="ps-7">
-      <header className="flex gap-20 items-end">
-        <Header>Recently Update</Header>
-        <span className="flex gap-10">
-          <Link
-            onClick={() => setActiveIndex(0)}
-            className={activeIndex == 0 ? "text-white" : " text-gray-500"}
-          >
-            All
-          </Link>
-          <Link
-            onClick={() => setActiveIndex(1)}
-            className={activeIndex == 1 ? "text-white" : " text-gray-500"}
-          >
-            Trending
-          </Link>
-          <Link
-            onClick={() => setActiveIndex(2)}
-            className={activeIndex == 2 ? "text-white" : " text-gray-500"}
-          >
-            Random
-          </Link>
-        </span>
-      </header>
-      <Main istest={istest} />
+    <div className=" mt-16  text-white sm:px-5 py-1">
+      <SliderComponents />
+      <Header>Continue Watching</Header>
+      <main className="md:flex gap-x-3 items-start  px-3 mt-10 ">
+        <section className="w-full">
+          <ContinueWatching />
+          <Pagination />
+          <RecentlyUpdate />
+        </section>
+        <LatestNews />
+      </main>
     </div>
   );
 };
 
-// Test
-const Main = (prop) => {
+const ContinueWatching = () => {
   const [data, setData] = useState([]);
+
+  // Get ApI
   useEffect(() => {
-    getAnimeRecently((res) => setData(res));
+    getAnimeContinueWatching((res) => setData(res.data.data));
   }, []);
   return (
-    <>
-      <div className="flex flex-wrap gap-x-5 gap-y-10   mt-10 ">
-        {data.map((item, i) => (
-          <Card
-            key={item.mal_id}
-            id={i}
-            src={item.images.jpg.image_url}
+    <div className="grid sm:grid-cols-2 gap-x-2 grid-cols-1 gap-y-3   w-full  ">
+      {data.map((item) => (
+        <Suspense fallback={<CardLoader />} key={item.mal_id}>
+          <CardText
+            src={item.trailer.images.image_url}
             alt={item.title}
             title={item.title}
-            episodes={item.episodes}
-            score={item.score}
+            episode={item.episodes}
           />
-        ))}
-      </div>
-      <Pagination />
-    </>
-  );
-};
-
-const Pagination = () => {
-  const [activeIndex, setActiveIndex] = useState(1);
-
-  return (
-    <div className="flex justify-center mt-10 gap-7">
-      {Array(5)
-        .fill()
-        .map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setActiveIndex(i + 1)}
-            className={`h-8 w-8 text-sm rounded-full  ${
-              activeIndex == i + 1 ? "bg-purple-400" : ""
-            } `}
-          >
-            {i + 1}
-          </button>
-        ))}
+        </Suspense>
+      ))}
     </div>
   );
 };
+export default HomePage;
