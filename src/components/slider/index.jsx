@@ -54,7 +54,11 @@ const Img = ({ item }) => {
 
 const Button = ({ children, style }) => {
   return (
-    <button className={`px-10 rounded-lg py-2  ${style}`}>{children}</button>
+    <button
+      className={`sm:px-10 px-6 rounded-lg py-2 sm:text-md text-xs  ${style}`}
+    >
+      {children}
+    </button>
   );
 };
 
