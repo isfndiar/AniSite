@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getAnimeDetail } from "../services/anime.service";
 
 export default function AnimeDetail() {
   const [data, setData] = useState({});

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
-import { getApiAnime } from "../services/anime.service";
 const ApiKeySecret = () => {
   const [data, setData] = useState([]);
   const [istest, setIsTest] = useState(
@@ -10,14 +9,6 @@ const ApiKeySecret = () => {
       .map((_, i) => i + 1)
   );
 
-  useEffect(() => {
-    getApiAnime(
-      (res) => setData(res),
-      (message) => {
-        console.log(message);
-      }
-    );
-  }, []);
   return (
     <div className="md:flex items-start  md:px-3 px-3   mt-10   ">
       <div className="flex md:gap-7 gap-y-4 flex-wrap justify-around mt-10 ">

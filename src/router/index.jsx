@@ -34,6 +34,10 @@ export const router = createBrowserRouter([
     element: <AnimeDetail />,
   },
   {
+    path: "/anime/:id/episodes/:episodes",
+    element: <AnimeDetail />,
+  },
+  {
     path: "/login",
     element: <LoginPage />,
   },

@@ -51,6 +51,7 @@ const ContinueWatching = () => {
             alt={item.title}
             title={item.title}
             episode={item.episodes}
+            id={item.mal_id}
           />
         </Suspense>
       ))}

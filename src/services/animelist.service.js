@@ -23,6 +23,25 @@ export const getAnimeRecently = async (callback, page = 1) => {
   }
 };
 
+const getAnimeByID = async (callback, id) => {
+  try {
+    const res = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
+    callback(res.data.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+const getAnimeByEpisode = async (callback, id, episode) => {
+  try {
+    const res = await axios.get(
+      `https://api.jikan.moe/v4/anime/${id}/episodes/${episode}`
+    );
+    callback(res.data.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getAnime = [
   {
     node: {

@@ -16,19 +16,6 @@ export const getApiAnime = (callback, message) => {
   getData();
 };
 
-export const getAnimeDetail = (id, callback) => {
-  async function getData() {
-    try {
-      const res = await axios.get(`https://api.nekosapi.com/v3/images/${id}`);
-      callback(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  getData();
-};
-
 export const createApiAnime = [
   {
     id: 0,
