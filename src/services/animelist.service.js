@@ -21,7 +21,7 @@ export const getAnimeContinueWatching = async (callback) => {
 export const getAnimeRecently = async (callback) => {
   try {
     const res = await axios.get(
-      "https://api.jikan.moe/v4/anime?q=jujutsu+kaisen"
+      "https://api.jikan.moe/v4/anime?q=jujutsu+kaisen&sfw=true"
     );
     callback(res.data.data);
   } catch (error) {
