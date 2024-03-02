@@ -7,30 +7,22 @@ import Pagination from "../Pagination/Pagination";
 
 const RecentlyUpdate = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const RecentlyMenu = [`All`, "Trending", "Random"];
   return (
     <>
       <div className="sm:ps-7 ps-0 ">
-        <header className="flex sm:gap-20  sm:items-end flex-col sm:flex-row items-center sm:gap-y-0 gap-y-5 bg-blue-500">
+        <header className="flex sm:gap-20  sm:items-end flex-col sm:flex-row items-center sm:gap-y-0 gap-y-5">
           <Header classname={`text-sm sm:text-2xl`}>Recently Update</Header>
           <span className="flex gap-10">
-            <Link
-              onClick={() => setActiveIndex(0)}
-              className={activeIndex == 0 ? "text-white" : " text-gray-500"}
-            >
-              All
-            </Link>
-            <Link
-              onClick={() => setActiveIndex(1)}
-              className={activeIndex == 1 ? "text-white" : " text-gray-500"}
-            >
-              Trending
-            </Link>
-            <Link
-              onClick={() => setActiveIndex(2)}
-              className={activeIndex == 2 ? "text-white" : " text-gray-500"}
-            >
-              Random
-            </Link>
+            {RecentlyMenu.map((item, i) => (
+              <Link
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                className={activeIndex == i ? "text-white" : " text-gray-500"}
+              >
+                {item}
+              </Link>
+            ))}
           </span>
         </header>
         <Main />
@@ -58,7 +50,7 @@ const Main = () => {
           .map((item, i) => (
             <Card
               key={item.mal_id + crypto.randomUUID()}
-              id={i}
+              id={item.mal_id}
               src={item.images.jpg.image_url}
               alt={item.title}
               title={item.title}
