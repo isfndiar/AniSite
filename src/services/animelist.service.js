@@ -23,7 +23,7 @@ export const getAnimeRecently = async (callback, page = 1) => {
   }
 };
 
-const getAnimeByID = async (callback, id) => {
+export const getAnimeByID = async (callback, id = 1) => {
   try {
     const res = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
     callback(res.data.data);
