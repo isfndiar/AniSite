@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { getAnimeByID } from "../services/animelist.service";
+import { getAnimeByID } from "../../services/animelist.service";
 
-export default function AnimeDetail() {
+export default function AnimeByID() {
   const [data, setData] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
     getAnimeByID((res) => setData(res), id);
   }, [id]);
+
   return (
     <>
-      <div className={`absolute w-full min-h-screen flex flex-col `}>
+      <div className={`w-full min-h-screen flex flex-col `}>
         <div className="mt-0  absolute bg-blue-500 top-0 left-0 right-0 -z-10 ">
           <img
             src={data.trailer?.images?.maximum_image_url || ""}

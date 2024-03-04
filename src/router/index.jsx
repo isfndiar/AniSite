@@ -4,10 +4,10 @@ import ErrorPage from "../pages/404";
 import LoginPage from "../pages/login";
 import RegisterPage from "../pages/register";
 import Navbar from "../layouts/Navbar";
-import Anime from "../pages/anime";
+import Anime from "../pages/anime/";
 import Manga from "../pages/manga";
-import AnimeDetail from "../pages/AnimeDetail";
 import ApiKeySecret from "../pages/ApiKey";
+import AnimeByID from "../pages/anime/AnimeByID";
 
 export const router = createBrowserRouter([
   {
@@ -31,11 +31,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/anime/:id",
-    element: <AnimeDetail />,
+    element: <AnimeByID />,
   },
   {
     path: "/anime/:id/episodes/:episodes",
-    element: <AnimeDetail />,
+    element: <AnimeByID />,
   },
   {
     path: "/login",
