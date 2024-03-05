@@ -8,6 +8,7 @@ import Anime from "../pages/anime/";
 import Manga from "../pages/manga";
 import ApiKeySecret from "../pages/ApiKey";
 import AnimeByID from "../pages/anime/AnimeByID";
+import AnimeByEpisodePage from "../pages/anime/animeByEpisode";
 
 export const router = createBrowserRouter([
   {
@@ -35,7 +36,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/anime/:id/episodes/:episodes",
-    element: <AnimeByID />,
+    element: <AnimeByEpisodePage />,
   },
   {
     path: "/login",
