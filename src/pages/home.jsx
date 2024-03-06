@@ -7,17 +7,11 @@ import { getAnimeContinueWatching } from "../services/animelist.service";
 import Pagination from "../components/Pagination/Pagination";
 import RecentlyUpdate from "../components/RecentlyUpdate/RecentlyUpdate";
 import Header from "../components/Header";
+import { useLoader } from "../hooks/useLoader";
 const CardText = lazy(() => import("../components/Card_text/CardText"));
 
 const HomePage = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  // Test loader
-  useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
+  const { isLoading } = useLoader();
 
   return (
     <div className=" mt-16  text-white sm:px-5 py-1">

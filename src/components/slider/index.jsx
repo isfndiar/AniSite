@@ -1,6 +1,5 @@
 import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { Carousel } from "flowbite-react";
-import { createApiAnime } from "../../services/anime.service";
 import SliderLoader from "../../Loader/SliderLoader";
 import * as Icon from "react-feather";
 import { getAnime } from "../../services/animelist.service";

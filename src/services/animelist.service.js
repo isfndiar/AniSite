@@ -96,3 +96,13 @@ export const getAnime = [
     },
   },
 ];
+
+export const getRecentAnimeRecommendations = async (callback) => {
+  try {
+    const res = await axios.get(`https://api.jikan.moe/v4/anime/1/news`);
+    callback(res.data.data);
+    console.log(res.data.data);
+  } catch (error) {
+    console.log(error);
+  }
+};

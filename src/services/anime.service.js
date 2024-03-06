@@ -1,48 +1,5 @@
 import axios from "axios";
 
-const CLIENT_ID = "be9944ca9e36070593feed73e3a0cf06";
-
-export const getApiAnime = (callback, message) => {
-  async function getData() {
-    try {
-      const res = await axios.get("https://api.nekosapi.com/v3/images");
-      callback(res.data.items);
-      message("Success yay");
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  getData();
-};
-
-export const createApiAnime = [
-  {
-    id: 0,
-    title: `jujutsu kaisen`,
-    year: 2014,
-    rating: 9.0,
-    desc: "this anime is suc",
-    imgUrl: "image1.jpg",
-  },
-  {
-    id: 1,
-    title: `Bleach`,
-    year: 2000,
-    rating: 9.0,
-    desc: "Menyala abangkuh",
-    imgUrl: "image2.jpg",
-  },
-  {
-    id: 2,
-    title: `Boruto`,
-    year: 2018,
-    rating: 4.5,
-    desc: "Boruto is a spin-off and a sequel to Kishimoto's Naruto and follows the exploits of Naruto Uzumaki's son, Boruto Uzumaki, and his ninja team",
-    imgUrl: "image3.jpg",
-  },
-];
-
 export const createLatestNew = [
   {
     id: 0,
