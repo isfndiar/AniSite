@@ -30,7 +30,7 @@ const Main = () => {
 
   return (
     <div className="flex flex-col mt-5 gap-5  text-sm">
-      <NavLink to={"/setting/profile"} className={setIsOpen}>
+      <NavLink to={"/profile"} className={setIsOpen}>
         <Icon.User size={20} /> Profile
       </NavLink>
       <NavLink to={"/genre"} className={setIsOpen}>
