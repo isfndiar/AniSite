@@ -6,23 +6,23 @@ import { useState } from "react";
 import { fixed, flexRes } from "./";
 import Logo from "../components/Logo";
 import Search from "../components/Search";
+import Footer from "./Footer";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isClick, setIsClick] = useState(false);
 
   return (
-    <div className="flex">
       <nav
-        className={`py-5 pe-6 lg:ps-[200px] ps-6 w-full lg:max-w-[96%]  bg-slate-800 text-white ${fixed}  z-50`}
+        className={`py-5 pe-6 lg:ps-[15rem] ps-6 w-full   bg-slate-800 text-white ${fixed}  z-50`}
       >
-        {/* Search Input */}
+        {/* Search Input mobile responsive*/}
         {isClick && (
           <Search
             classIcon={`hidden`}
             classSearch={`flex justify-between  items-center bg-slate-900 px-2 py-1 rounded-xl w-full mb-5 transition-all`}
           />
         )}
-        {/* START */}
+        
         <div className={`${flexRes} w-full`}>
           <Logo
             classname="ms-2 text-3xl w-1/2 sm:hidden inline-block"
@@ -72,15 +72,9 @@ export default function Navbar() {
             <Icon.Menu />
           </Link>
         </div>
-        {/* END */}
       </nav>
 
-      {/* side Nav */}
-      <Aside zIndex={"z-[99]"} />
-      <div className="w-full min-h-screen bg-slate-900 mt-10 lg:ml-[16%] ml-0 ">
-        <Outlet />
-      </div>
-    </div>
+
   );
 }
 

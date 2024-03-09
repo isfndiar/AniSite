@@ -1,47 +1,53 @@
 import axios from "axios";
 
+// Function to get anime that the user is currently watching
 export const getAnimeContinueWatching = async (callback) => {
   try {
-    const res = await axios.get(
-      "https://api.jikan.moe/v4/anime?q=bleach&limit=4"
-    );
-
+    const res = await axios.get("https://api.jikan.moe/v4/anime?q=bleach&limit=4");
+    // Callback to pass the response data
     callback(res);
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching continue watching anime:", error);
   }
 };
 
+// Function to get recently released anime
 export const getAnimeRecently = async (callback, page = 1) => {
   try {
-    const res = await axios.get(
-      `https://api.jikan.moe/v4/anime?sfw=true&page=${page}`
-    );
+    const res = await axios.get(`https://api.jikan.moe/v4/anime?sfw=true&page=${page}`);
+    // Callback to pass the response data
     callback(res.data.data);
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching recently released anime:", error);
   }
 };
 
+// Function to get Anime by Id
 export const getAnimeByID = async (callback, id = 1) => {
   try {
     const res = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
+    // callback to pass the response data
     callback(res.data.data);
   } catch (error) {
     console.log(error);
   }
 };
+
+// Function to get Anime by Episode
 const getAnimeByEpisode = async (callback, id, episode) => {
   try {
     const res = await axios.get(
       `https://api.jikan.moe/v4/anime/${id}/episodes/${episode}`
     );
+    // callback to pass the response data
     callback(res.data.data);
   } catch (error) {
-    console.log(error);
+    console.log("Error fetching Anime by episode",error);
   }
 };
 
+
+// Data(array) anime for Slider
 export const getAnime = [
   {
     node: {
@@ -52,9 +58,7 @@ export const getAnime = [
         large: "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg",
       },
     },
-    ranking: {
-      rank: 1,
-    },
+   
   },
   {
     node: {
@@ -65,9 +69,7 @@ export const getAnime = [
         large: "https://cdn.myanimelist.net/images/anime/1208/94745l.jpg",
       },
     },
-    ranking: {
-      rank: 2,
-    },
+   
   },
   {
     node: {
@@ -78,9 +80,7 @@ export const getAnime = [
         large: "https://cdn.myanimelist.net/images/anime/1935/127974l.jpg",
       },
     },
-    ranking: {
-      rank: 3,
-    },
+   
   },
   {
     node: {
@@ -91,12 +91,10 @@ export const getAnime = [
         large: "https://cdn.myanimelist.net/images/anime/3/72078l.jpg",
       },
     },
-    ranking: {
-      rank: 4,
-    },
   },
 ];
 
+// Function to get Recent Anime Recommendations
 export const getRecentAnimeRecommendations = async (callback) => {
   try {
     const res = await axios.get(`https://api.jikan.moe/v4/anime/1/news`);

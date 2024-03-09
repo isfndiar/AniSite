@@ -8,13 +8,15 @@ import Pagination from "../components/Pagination/Pagination";
 import RecentlyUpdate from "../components/RecentlyUpdate/RecentlyUpdate";
 import Header from "../components/Header";
 import { useLoader } from "../hooks/useLoader";
+import Navbar from "../layouts/Navbar";
 const CardText = lazy(() => import("../components/Card_text/CardText"));
 
 const HomePage = () => {
   const { isLoading } = useLoader();
 
   return (
-    <div className=" mt-16  text-white sm:px-5 py-1">
+    <>
+    <div className=" mt-28 mb-2  text-white sm:px-5 py-1">
       <SliderComponents />
       <Header>Continue Watching</Header>
       <main className="md:flex gap-x-3 items-start  px-3 mt-10 ">
@@ -26,6 +28,7 @@ const HomePage = () => {
         <LatestNews />
       </main>
     </div>
+    </>
   );
 };
 

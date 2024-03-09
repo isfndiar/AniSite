@@ -1,25 +1,36 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import Logo from "../components/Logo";
 import * as Icon from "react-feather";
 import { useState } from "react";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 export default function Aside({ zIndex, isOpen }) {
   return (
+    <>
+    <Navbar />
+    <div className="flex">
     <div
       className={`${zIndex} ${
-        isOpen ? "block" : "  hidden lg:block"
+        isOpen ? "block" : "hidden lg:block"
       } h-full bg-slate-800 text-white md:w-2/12 sm:w-2/12  shadow-2xl border-r  border-slate-900 text-center  fixed top-0  overflow-y-scroll visible `}
-    >
+      >
       <div className="sticky top-0 left-0 right-0 bg-slate-800 pb-10 py-5 w-full  ">
         <Logo to={"/"} classname="  text-center   " />
       </div>
       <Main />
     </div>
+    <div className="w-full min-h-screen bg-slate-900  lg:ml-[16%] ml-0 "> 
+    <Outlet />
+    </div>
+    </div>
+    <Footer />
+      </>
   );
 }
 
 const Main = () => {
-  const [isClick, setIsClick] = useState(true);
+  const [isClick, setIsClick] = useState(false);
   const setIsOpen = ({ isActive, isPending }) => {
     return isActive
       ? ` bg-purple-500 px-2 py-2  flex gap-3 rounded-lg mx-7 `
@@ -43,7 +54,7 @@ const Main = () => {
             isClick ? setIsOpen : "px-2 py-2  flex gap-3 rounded-lg mx-7"
           }
         >
-          <Icon.FileText size={20} /> MyList{" "}
+          <Icon.FileText size={20} /> MyList
           <Icon.ChevronDown
             size={16}
             className={`transition-all ${isClick ? "" : "rotate-180  "} `}

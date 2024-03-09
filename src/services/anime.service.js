@@ -1,5 +1,6 @@
-import axios from "axios";
 
+
+// Data for Latest New Components
 export const createLatestNew = [
   {
     id: 0,

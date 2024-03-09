@@ -6,7 +6,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        kausan: [ "Kaushan Script", 'serif'],
+        courgette: [ "Courgette", 'serif'],
+      }
+    },
   },
   plugins: ["require(flowbite/plugin)"],
 };

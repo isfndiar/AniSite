@@ -10,7 +10,7 @@ const RecentlyUpdate = () => {
   const RecentlyMenu = [`All`, "Trending", "Random"];
   return (
     <>
-      <div className="sm:ps-7 ps-0 ">
+      <div className="sm:ps-7 ">
         <header className="flex sm:gap-20  sm:items-end flex-col sm:flex-row items-center sm:gap-y-0 gap-y-5">
           <Header classname={`text-sm sm:text-2xl`}>Recently Update</Header>
           <span className="flex gap-10">
