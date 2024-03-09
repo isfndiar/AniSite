@@ -5,9 +5,11 @@ import Aside from "./Aside";
 import { useState } from "react";
 import { fixed, flexRes } from "./";
 import Logo from "../components/Logo";
+import Search from "../components/Search";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isClick, setIsClick] = useState(false);
+
   return (
     <div className="flex">
       <nav
@@ -15,7 +17,7 @@ export default function Navbar() {
       >
         {/* Search Input */}
         {isClick && (
-          <Seacrh
+          <Search
             classIcon={`hidden`}
             classSearch={`flex justify-between  items-center bg-slate-900 px-2 py-1 rounded-xl w-full mb-5 transition-all`}
           />
@@ -26,7 +28,7 @@ export default function Navbar() {
             classname="ms-2 text-3xl w-1/2 sm:hidden inline-block"
             to={"/"}
           />
-          <Seacrh
+          <Search
             classIcon={"inline-block"}
             classSearch={
               "hidden sm:flex justify-between  items-center bg-slate-900 px-2 py-1 rounded-xl w-[45%]"
@@ -37,7 +39,7 @@ export default function Navbar() {
             classname={"md:flex text-sm  hidden  w-1/3 px-3 justify-between"}
           />
 
-          {/* Navbar-List menu open start*/}
+          {/* Navbar-List Mobile Responsive */}
           {isOpen && (
             <>
               <ListMenu
@@ -53,18 +55,22 @@ export default function Navbar() {
               </button>
             </>
           )}
-          {/* Navbar-List  menu end */}
+          {/* Navbar-List */}
 
+          {/* Auth Button */}
           <div className="lg:ms-0 ms-auto md:me-0 me-3">
-            <AuthButton />
+            <Link to={"/login"}>
+              <Button title={"Sign In"} />
+            </Link>
           </div>
 
-          <NavLink
+          {/* Menu Icon */}
+          <Link
             className={"md:hidden  flex"}
             onClick={() => setIsOpen((isOpen) => !isOpen)}
           >
             <Icon.Menu />
-          </NavLink>
+          </Link>
         </div>
         {/* END */}
       </nav>
@@ -77,25 +83,6 @@ export default function Navbar() {
     </div>
   );
 }
-
-const Seacrh = ({ handleClick, classSearch, classIcon }) => {
-  return (
-    <>
-      <div className={`${classSearch}`}>
-        <input
-          type="text"
-          className="border-none w-full bg-transparent text-white placeholder:text-white py-1 px-1 outline-none "
-          placeholder="Seacrh"
-        />
-        <Icon.Search className="w-4" />{" "}
-      </div>
-      <Icon.Search
-        onClick={handleClick}
-        className={`${classIcon} sm:hidden cursor-pointer`}
-      ></Icon.Search>
-    </>
-  );
-};
 
 const ListMenu = ({ classname }) => {
   const setIsOpen = ({ isActive, isPending }) => {
@@ -120,14 +107,5 @@ const ListMenu = ({ classname }) => {
         Movies
       </NavLink>
     </div>
-  );
-};
-
-const AuthButton = () => {
-  return (
-    <Link to={"/login"}>
-      {" "}
-      <Button title={"Sign In"} />
-    </Link>
   );
 };
