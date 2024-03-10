@@ -10,10 +10,7 @@ const Search = ({ handleClick, classSearch, classIcon }) => {
         />
         <Icon.Search className="w-4" />{" "}
       </div>
-      <Icon.Search
-        onClick={handleClick}
-        className={`${classIcon} sm:hidden cursor-pointer`}
-      ></Icon.Search>
+
     </>
   );
 };

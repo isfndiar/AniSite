@@ -12,58 +12,43 @@ export default function Navbar() {
   const [isClick, setIsClick] = useState(false);
 
   return (
-      <nav
-        className={`py-5 pe-6 lg:ps-[15rem] ps-6 w-full   bg-slate-800 text-white ${fixed}  z-50`}
-      >
-        {/* Search Input mobile responsive*/}
+    <nav
+      className={`py-5 pe-6 lg:ps-[15rem] ps-6 w-full   bg-slate-800 text-white ${fixed}  z-50`}
+    >
+      {/* Search Input mobile responsive*/}
+      <div>
         {isClick && (
           <Search
-            classIcon={`hidden`}
-            classSearch={`flex justify-between  items-center bg-slate-900 px-2 py-1 rounded-xl w-full mb-5 transition-all`}
+            classSearch={`${flexRes} bg-slate-900 px-2 py-1 rounded-xl w-full mb-5 transition-all`}
           />
         )}
-        
-        <div className={`${flexRes} w-full`}>
-          <Logo
-            classname="ms-2 text-3xl w-1/2 sm:hidden inline-block"
-            to={"/"}
-          />
-          <Search
-            classIcon={"inline-block"}
-            classSearch={
-              "hidden sm:flex justify-between  items-center bg-slate-900 px-2 py-1 rounded-xl w-[45%]"
-            }
-            handleClick={() => setIsClick((isClick) => !isClick)}
-          />
-          <ListMenu
-            classname={"md:flex text-sm  hidden  w-1/3 px-3 justify-between"}
-          />
+      </div>
+      <div className={`${flexRes} w-full`}>
+        <Logo classname="ms-2 text-3xl w-1/2 sm:hidden inline-block" to={"/"} />
+        <Search
+          classSearch={
+            "hidden sm:flex justify-between  items-center bg-slate-900 px-2 py-1 rounded-xl w-[45%]"
+          }
+        />
 
-          {/* Navbar-List Mobile Responsive */}
-          {isOpen && (
-            <>
-              <ListMenu
-                classname={
-                  "w-full fixed text-3xl flex justify-center items-center flex-col gap-3 bg-slate-700    bottom-0 top-0 left-0 right-0 z-20"
-                }
-              />
-              <button
-                className="z-30 text-3xl font-semibold  absolute right-10 top-10 "
-                onClick={() => setIsOpen(false)}
-              >
-                X
-              </button>
-            </>
-          )}
-          {/* Navbar-List */}
+        <ListMenu
+          classname={"md:flex text-sm  hidden  w-1/3 px-3 justify-between"}
+        />
 
-          {/* Auth Button */}
-          <div className="lg:ms-0 ms-auto md:me-0 me-3">
-            <Link to={"/login"}>
-              <Button title={"Sign In"} />
-            </Link>
-          </div>
-
+        {/* Navbar-List Mobile Responsive */}
+        <NavbarMobileResponsive
+          handleClick={() => setIsOpen(false)}
+          isOpen={isOpen}
+        />
+        {/* Auth, Menu, Search Button */}
+        <div className="flex items-center  gap-3">
+          <Icon.Search
+            onClick={() => setIsClick((isClick) => !isClick)}
+            className={` sm:hidden cursor-pointer`}
+          />
+          <Link to={"/login"}>
+            <Button title={"Sign In"} />
+          </Link>
           {/* Menu Icon */}
           <Link
             className={"md:hidden  flex"}
@@ -72,11 +57,32 @@ export default function Navbar() {
             <Icon.Menu />
           </Link>
         </div>
-      </nav>
-
-
+      </div>
+    </nav>
   );
 }
+
+const NavbarMobileResponsive = ({ isOpen, handleClick }) => {
+  return (
+    <>
+      {isOpen && (
+        <>
+          <ListMenu
+            classname={
+              "w-1/2 fixed text-3xl flex justify-center items-center flex-col gap-3 bg-slate-800 bottom-0 top-0 right-0 transition-all"
+            }
+          />
+          <button
+            className="z-30 text-3xl font-semibold  absolute right-10 top-10 "
+            onClick={handleClick}
+          >
+            X
+          </button>
+        </>
+      )}
+    </>
+  );
+};
 
 const ListMenu = ({ classname }) => {
   const setIsOpen = ({ isActive, isPending }) => {
