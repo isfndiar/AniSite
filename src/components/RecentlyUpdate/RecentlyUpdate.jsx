@@ -6,30 +6,36 @@ import Header from "../Header";
 import Pagination from "../Pagination/Pagination";
 
 const RecentlyUpdate = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const RecentlyMenu = [`All`, "Trending", "Random"];
   return (
     <>
       <div className="sm:ps-7 ">
         <header className="flex sm:gap-20  sm:items-end flex-col sm:flex-row items-center sm:gap-y-0 gap-y-5">
           <Header classname={`text-sm sm:text-2xl`}>Recently Update</Header>
-          <span className="flex gap-10">
-            {RecentlyMenu.map((item, i) => (
-              <Link
-                key={i}
-                onClick={() => setActiveIndex(i)}
-                className={activeIndex == i ? "text-white" : " text-gray-500"}
-              >
-                {item}
-              </Link>
-            ))}
-          </span>
+          <RecentlyMenu />
         </header>
         <Main />
       </div>
     </>
   );
 };
+
+function RecentlyMenu() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const RecentlyMenu = [`All`, "Trending", "Random"];
+  return (
+    <span className="flex gap-10">
+      {RecentlyMenu.map((item, i) => (
+        <Link
+          key={i}
+          onClick={() => setActiveIndex(i)}
+          className={activeIndex == i ? "text-white" : " text-gray-500"}
+        >
+          {item}
+        </Link>
+      ))}
+    </span>
+  );
+}
 
 const Main = () => {
   const [data, setData] = useState([]);
@@ -45,7 +51,7 @@ const Main = () => {
   };
   return (
     <>
-      <div className="flex flex-wrap gap-x-5 gap-y-10   mt-10 ">
+      <div className="flex flex-wrap gap-x-5 gap-y-10 justify-center  mt-10 ">
         {data
           .map((item, i) => (
             <Card
@@ -64,4 +70,5 @@ const Main = () => {
     </>
   );
 };
+
 export default RecentlyUpdate;

@@ -10,11 +10,12 @@ import AnimeByEpisodePage from "../pages/anime/animeByEpisode";
 import TestPage from "../pages/test/test_component";
 import ProfilePage from "../pages/profile";
 import Aside from "../layouts/Aside";
+import ComingSoon from "../pages/ComingSoon";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-      element:<Aside zIndex={"z-[99]"} /> ,
+    element: <Aside zIndex={"z-[99]"} />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -55,5 +56,28 @@ export const router = createBrowserRouter([
     path: "/test",
     element: <TestPage />,
   },
+  {
+    path: "/mylist",
+    element: <ComingSoon />,
+  },
+  {
+    path: "/favorite",
+    element: <ComingSoon />,
+  },
+  {
+    path: "/evaluation",
+    element: <ComingSoon />,
+  },
+  {
+    path: "/download",
+    element: <ComingSoon />,
+  },
+  {
+    path: "/dates",
+    element: <ComingSoon />,
+  },
+  {
+    path: "/setting",
+    element: <ComingSoon />,
+  },
 ]);
-

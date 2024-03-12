@@ -8,24 +8,24 @@ import Navbar from "./Navbar";
 export default function Aside({ zIndex, isOpen }) {
   return (
     <>
-    <Navbar />
-    <div className="flex">
-    <div
-      className={`${zIndex} ${
-        isOpen ? "block" : "hidden lg:block"
-      } h-full bg-slate-800 text-white md:w-2/12 sm:w-2/12  shadow-2xl border-r  border-slate-900 text-center  fixed top-0  overflow-y-scroll visible `}
-      >
-      <div className="sticky top-0 left-0 right-0 bg-slate-800 pb-10 py-5 w-full  ">
-        <Logo to={"/"} classname="  text-center   " />
+      <Navbar />
+      <div className="flex">
+        <div
+          className={`${zIndex} ${
+            isOpen ? "block" : "hidden lg:block"
+          } h-full bg-slate-800 text-white md:w-2/12 sm:w-2/12  shadow-2xl border-r  border-slate-900 text-center  fixed top-0  overflow-y-scroll visible `}
+        >
+          <div className="sticky top-0 left-0 right-0 bg-slate-800 pb-10 py-5 w-full  ">
+            <Logo to={"/"} classname="  text-center   " />
+          </div>
+          <Main />
+        </div>
+        <div className="w-full min-h-screen bg-slate-900  lg:ml-[16%] ml-0 ">
+          <Outlet />
+        </div>
       </div>
-      <Main />
-    </div>
-    <div className="w-full min-h-screen bg-slate-900  lg:ml-[16%] ml-0 "> 
-    <Outlet />
-    </div>
-    </div>
-    <Footer />
-      </>
+      <Footer />
+    </>
   );
 }
 
@@ -62,11 +62,11 @@ const Main = () => {
         </NavLink>
         {isClick && (
           <div className="flex flex-col gap-2 text-xs ml-20 mt-2  me-5 h-28 text-start overflow-y-auto scroll-purple ">
-            <div>Last Watched</div>
-            <div>Watching New</div>
-            <div>Want To Watch</div>
-            <div>Complete Later</div>
-            <div>Completed</div>
+            <Link className="hover:text-slate-300">Last Watched</Link>
+            <Link className="hover:text-slate-300">Watching New</Link>
+            <Link className="hover:text-slate-300">Want To Watch</Link>
+            <Link className="hover:text-slate-300">Complete Later</Link>
+            <Link className="hover:text-slate-300">Completed</Link>
           </div>
         )}
       </div>
@@ -80,7 +80,7 @@ const Main = () => {
       <NavLink to={"/evaluation"} className={setIsOpen}>
         <Icon.Grid size={20} /> Global evaluation
       </NavLink>
-      <NavLink to={"/episodes"} className={setIsOpen}>
+      <NavLink to={"/dates"} className={setIsOpen}>
         <Icon.Calendar size={20} /> Episode Dates
       </NavLink>
       <NavLink to={"/setting"} className={setIsOpen}>

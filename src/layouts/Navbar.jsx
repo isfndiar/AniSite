@@ -1,12 +1,10 @@
 import * as Icon from "react-feather";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import Button from "../components/Button/Button";
-import Aside from "./Aside";
 import { useState } from "react";
 import { fixed, flexRes } from "./";
 import Logo from "../components/Logo";
 import Search from "../components/Search";
-import Footer from "./Footer";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isClick, setIsClick] = useState(false);
@@ -30,7 +28,6 @@ export default function Navbar() {
             "hidden sm:flex justify-between  items-center bg-slate-900 px-2 py-1 rounded-xl w-[45%]"
           }
         />
-
         <ListMenu
           classname={"md:flex text-sm  hidden  w-1/3 px-3 justify-between"}
         />
