@@ -1,11 +1,13 @@
 import { Card, Flowbite } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
 import { ChevronRight, User } from "react-feather";
+import Modal from "@/layouts/ModalLayouts";
 
 const ProfilePage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [photoProfile, setPhotoProfile] = useState(false);
   const [value, setValue] = useState("jhondoe");
+  const [email, setEmail] = useState("jhondoesmith@gmail.com");
   const accountRef = useRef(null);
   useEffect(() => {}, []);
 
@@ -42,7 +44,7 @@ const ProfilePage = () => {
           <UserDetail
             handleClick={() => setOpenModal((openModal) => !openModal)}
             title={"Email"}
-            value={value}
+            value={email}
           />
         </Card>
       </div>
@@ -50,70 +52,13 @@ const ProfilePage = () => {
   );
 };
 
-const Modal = ({ addData, handleCancel }) => {
-  const [value, setValue] = useState("jhondoe");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = {
-      value,
-      modal: false,
-    };
-    addData(data);
-  };
-
-  return (
-    <>
-      <div className="fixed bg-black bg-opacity-35 left-0 right-0 top-0 bottom-0 flex justify-center items-center min-h-screen z-[99] ">
-        <Card className="relative w-full max-w-md bg-gray-800  ">
-          <p>Update Your Name</p>
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <fieldset className=" px-2 pb-2 border border-white ">
-              <legend className=""> User Information </legend>
-              <input
-                className="border-none outline-none bg-transparent text-white px-2 "
-                type="text"
-                id="nama"
-                name="nama"
-                placeholder="jondoe"
-                onChange={(e) => setValue(e.target.value)}
-                value={value}
-              />
-            </fieldset>
-            <div className="mt-4 flex justify-end space-x-3 lg:mt-6">
-              <a
-                onClick={handleCancel}
-                href="#"
-                className="inline-flex items-center rounded-lg bg-cyan-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
-              >
-                Cancel
-              </a>
-              <button className="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-700">
-                Confirm
-              </button>
-            </div>
-          </form>
-        </Card>
-      </div>
-    </>
-  );
-};
-
-function ButtonClose({ handleClick }) {
-  return (
-    <button onClick={handleClick} className=" absolute top-3 right-3 text-md">
-      ✖️
-    </button>
-  );
-}
-
 const UserDetail = ({ handleClick, title, value }) => {
   return (
     <div
       onClick={handleClick}
       className="flex justify-between items-center group  cursor-pointer"
     >
-      <div className="group-hover:text-slate-400">
+      <div className="group-hover:text-slate-400 flex flex-col sm:flex-row sm:justify-between  w-1/2">
         <p>{title}</p>
         <p>{value}</p>
       </div>

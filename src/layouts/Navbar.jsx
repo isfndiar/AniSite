@@ -1,10 +1,9 @@
 import * as Icon from "react-feather";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Button from "../components/Button/Button";
 import { useState } from "react";
 import { fixed, flexRes } from "./";
 import Logo from "../components/Logo";
-import Search from "../components/Search";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isClick, setIsClick] = useState(false);
@@ -78,6 +77,19 @@ const NavbarMobileResponsive = ({ isOpen, handleClick }) => {
         </>
       )}
     </>
+  );
+};
+
+const Search = ({ classSearch }) => {
+  return (
+    <div className={`${classSearch}`}>
+      <input
+        type="text"
+        className="border-none w-full bg-transparent text-white placeholder:text-white py-1 px-1 outline-none "
+        placeholder="Search"
+      />
+      <Icon.Search className="w-4" />{" "}
+    </div>
   );
 };
 

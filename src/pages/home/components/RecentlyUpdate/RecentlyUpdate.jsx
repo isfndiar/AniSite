@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getAnimeRecently } from "../../services/animelist.service";
-import Card from "../Card";
 import { Link } from "react-router-dom";
-import Header from "../Header";
-import Pagination from "../Pagination/Pagination";
+import { getAnimeRecently } from "@/services/animelist.service";
+import Pagination from "@/components/Pagination/Pagination";
+import Header from "@/components/Header";
+import CardText from "@/components/Card_text/CardText";
 
 const RecentlyUpdate = () => {
   return (
@@ -54,7 +54,7 @@ const Main = () => {
       <div className="flex flex-wrap gap-x-5 gap-y-10 justify-center  mt-10 ">
         {data
           .map((item, i) => (
-            <Card
+            <CardText
               key={item.mal_id + crypto.randomUUID()}
               id={item.mal_id}
               src={item.images.jpg.image_url}

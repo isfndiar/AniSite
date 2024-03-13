@@ -1,13 +1,13 @@
 import { Suspense, useEffect, lazy } from "react";
 import { useState } from "react";
-import { getAnimeContinueWatching } from "../services/animelist.service";
-import SliderComponents from "../components/slider";
-import CardLoader from "../Loader/CardLoader";
-import LatestNews from "../components/LatestNew";
-import Pagination from "../components/Pagination/Pagination";
-import RecentlyUpdate from "../components/RecentlyUpdate/RecentlyUpdate";
-import Header from "../components/Header";
-const CardText = lazy(() => import("../components/Card_text/CardText"));
+import { getAnimeContinueWatching } from "../../services/animelist.service";
+import SliderComponents from "./components/SliderComponents";
+import CardLoader from "../../Loader/CardLoader";
+import LatestNews from "./components/LatestNew";
+import Pagination from "../../components/Pagination/Pagination";
+import RecentlyUpdate from "./components/RecentlyUpdate/RecentlyUpdate";
+import Header from "../../components/Header";
+const CardText = lazy(() => import("../../components/Card_text/CardText"));
 
 const HomePage = () => {
   return (

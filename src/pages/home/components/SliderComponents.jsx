@@ -1,13 +1,9 @@
-import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
+import { Suspense } from "react";
 import { Carousel } from "flowbite-react";
-import SliderLoader from "../../Loader/SliderLoader";
+import SliderLoader from "@/Loader/SliderLoader";
 import * as Icon from "react-feather";
-import { getAnime } from "../../services/animelist.service";
+import { getAnime } from "@/services/animelist.service";
 const SliderComponents = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    // getAnime((res) => setData(res));
-  }, []);
   return (
     <>
       <div className="h-56 sm:h-64 xl:h-[26rem]  w-full md:px-20 px-5  ">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Content from "./Content";
-import { getRecentAnimeRecommendations } from "../../services/animelist.service";
+import { getRecentAnimeRecommendations } from "../../../../services/animelist.service";
 const LatestNews = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
