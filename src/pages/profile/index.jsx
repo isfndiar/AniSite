@@ -1,4 +1,4 @@
-import { Card } from "flowbite-react";
+import { Card, Flowbite } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
 import { ChevronRight, User } from "react-feather";
 
@@ -20,7 +20,7 @@ const ProfilePage = () => {
           <Modal addData={addData} handleCancel={() => setOpenModal(false)} />
         )}
         <h1 className="text-2xl font-semibold">Profile Account</h1>
-        <Card className="w-full max-w-md mt-6">
+        <Card className="w-full max-w-md sm:max-w-full mt-6 bg-gray-800">
           <div className="flex items-center gap-3 border-b pb-5 w-full">
             <div
               onClick={() => setPhotoProfile((x) => !x)}
@@ -33,16 +33,17 @@ const ProfilePage = () => {
           <div className="text-sm font-light border-b pb-3 ">
             The information below only data dummy. database has not integrated
           </div>
-          <div
-            onClick={() => setOpenModal((openModal) => !openModal)}
-            className="flex justify-between items-center group  cursor-pointer"
-          >
-            <div className="group-hover:text-slate-400">
-              <p>Name</p>
-              <p>{value}</p>
-            </div>
-            <ChevronRight className="group-hover:text-slate-400" />
-          </div>
+          <UserDetail
+            handleClick={() => setOpenModal((openModal) => !openModal)}
+            title={"Name"}
+            value={value}
+          />
+          <hr />
+          <UserDetail
+            handleClick={() => setOpenModal((openModal) => !openModal)}
+            title={"Email"}
+            value={value}
+          />
         </Card>
       </div>
     </>
@@ -64,11 +65,11 @@ const Modal = ({ addData, handleCancel }) => {
   return (
     <>
       <div className="fixed bg-black bg-opacity-35 left-0 right-0 top-0 bottom-0 flex justify-center items-center min-h-screen z-[99] ">
-        <Card className="relative w-full max-w-md">
+        <Card className="relative w-full max-w-md bg-gray-800  ">
           <p>Update Your Name</p>
           <form onSubmit={(e) => handleSubmit(e)}>
-            <fieldset className=" px-2 pb-2 border border-white">
-              <legend> User Information </legend>
+            <fieldset className=" px-2 pb-2 border border-white ">
+              <legend className=""> User Information </legend>
               <input
                 className="border-none outline-none bg-transparent text-white px-2 "
                 type="text"
@@ -106,4 +107,18 @@ function ButtonClose({ handleClick }) {
   );
 }
 
+const UserDetail = ({ handleClick, title, value }) => {
+  return (
+    <div
+      onClick={handleClick}
+      className="flex justify-between items-center group  cursor-pointer"
+    >
+      <div className="group-hover:text-slate-400">
+        <p>{title}</p>
+        <p>{value}</p>
+      </div>
+      <ChevronRight className="group-hover:text-slate-400" />
+    </div>
+  );
+};
 export default ProfilePage;
