@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Kaushan+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Kaushan+Script&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -41,4 +41,8 @@
 .scroll-purple::-webkit-scrollbar {
   width: 5px;
   background: #3c424e;
+}
+
+.chevron-right {
+  @apply hidden sm:inline-block lg:hidden fixed top-40  -left-3 bottom-0 bg-slate-800 rounded-full z-[99];
 }

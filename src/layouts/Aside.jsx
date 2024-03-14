@@ -5,19 +5,49 @@ import { useState } from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
-export default function Aside({ zIndex, isOpen }) {
+export default function Aside() {
+  const [isOpen, setIsOpen] = useState(false);
+  const navClicked = ({ isActive, isPending }) => {
+    return isActive
+      ? `text-purple-800`
+      : isPending
+      ? "text-white"
+      : "text-white";
+  };
   return (
     <>
       <Navbar />
-      <div className="flex">
+      <div className="w-full py-3 px-3 rounded-tl-3xl rounded-tr-3xl fixed left-0 right-0 bottom-0 sm:hidden flex justify-around  bg-slate-800 text-white z-[99] border-t border-white">
+        <NavLink className={navClicked} to={"/"}>
+          <Icon.Home size={30} />
+        </NavLink>
+        <NavLink className={navClicked} to={"/profile"}>
+          <Icon.User size={30} />
+        </NavLink>
+        <NavLink className={navClicked} to={"/gallery"}>
+          <Icon.Grid size={30} />
+        </NavLink>
+        <NavLink className={navClicked} to={"/setting"}>
+          <Icon.Settings size={30} />
+        </NavLink>
+      </div>
+      <div className="flex relative">
+        <Icon.ChevronRight
+          size={35}
+          onClick={() => setIsOpen((x) => !x)}
+          className={`${
+            isOpen ? "translate-x-56" : ""
+          } transition-all duration-1000 chevron-right cursor-pointer`}
+          color="white"
+        />
         <div
-          className={`${zIndex} ${
-            isOpen ? "block" : "hidden lg:block"
-          } h-full bg-slate-800 text-white md:w-2/12 sm:w-2/12  shadow-2xl border-r  border-slate-900 text-center  fixed top-0  overflow-y-scroll visible `}
+          className={`${
+            isOpen ? "sm:max-w-[14rem]" : " sm:max-w-0 lg:max-w-[14rem] "
+          } hidden sm:inline-block lg:inline-block h-full w-full transition-all duration-1000 origin-left text-center  fixed top-0  overflow-y-scroll visible z-[99] bg-slate-800 text-white shadow-2xl border-r  border-slate-900`}
         >
-          <div className="sticky top-0 left-0 right-0 bg-slate-800 pb-10 py-5 w-full  ">
-            <Logo to={"/"} classname="  text-center   " />
-          </div>
+          <header className="sticky top-0 left-0 right-0 bg-slate-800 pb-10 py-5 w-full  ">
+            <Logo to={"/"} classname="  text-center " />
+          </header>
           <Main />
         </div>
         <div className="w-full min-h-screen bg-slate-900  lg:ml-[16%] ml-0 ">

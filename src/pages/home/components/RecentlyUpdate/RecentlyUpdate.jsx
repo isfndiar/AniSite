@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getAnimeRecently } from "@/services/animelist.service";
 import Pagination from "@/components/Pagination/Pagination";
 import Header from "@/components/Header";
-import CardText from "@/components/Card_text/CardText";
+import Card from "@/components/Card";
 
 const RecentlyUpdate = () => {
   return (
@@ -54,7 +54,7 @@ const Main = () => {
       <div className="flex flex-wrap gap-x-5 gap-y-10 justify-center  mt-10 ">
         {data
           .map((item, i) => (
-            <CardText
+            <Card
               key={item.mal_id + crypto.randomUUID()}
               id={item.mal_id}
               src={item.images.jpg.image_url}

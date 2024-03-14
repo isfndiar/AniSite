@@ -7,7 +7,7 @@ import Anime from "../pages/anime/";
 import Manga from "../pages/manga";
 import AnimeByID from "../pages/anime/AnimeByID";
 import AnimeByEpisodePage from "../pages/anime/animeByEpisode";
-import TestPage from "../pages/test/test_component";
+import TestPage from "../pages/test/components.test";
 import ProfilePage from "../pages/profile";
 import Aside from "../layouts/Aside";
 import ComingSoon from "../pages/ComingSoon";
@@ -15,7 +15,7 @@ import ComingSoon from "../pages/ComingSoon";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Aside zIndex={"z-[99]"} />,
+    element: <Aside />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -78,6 +78,10 @@ export const router = createBrowserRouter([
   },
   {
     path: "/setting",
+    element: <ComingSoon />,
+  },
+  {
+    path: "/gallery",
     element: <ComingSoon />,
   },
 ]);
