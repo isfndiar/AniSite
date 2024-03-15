@@ -1,9 +1,16 @@
 import React from "react";
 
-const Input = ({ type, placeholder, forId, wFull = "w-full" }) => {
+const Input = (props) => {
+  const {
+    type,
+    placeholder,
+    forId,
+    wFull = "w-full",
+    textSize = "text-sm",
+  } = props;
   return (
     <input
-      className={`bg-transparent  text-sm px-2  outline-none ${wFull}`}
+      className={`bg-transparent px-2  outline-none ${wFull} ${textSize}`}
       type={type}
       placeholder={placeholder}
       id={forId}

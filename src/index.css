@@ -43,6 +43,10 @@
   background: #3c424e;
 }
 
+.fixed-center {
+  @apply fixed left-0 right-0 top-0 bottom-0 flex justify-center items-center min-h-screen;
+}
+
 .chevron-right {
   @apply hidden sm:inline-block lg:hidden fixed top-40  -left-3 bottom-0 bg-slate-800 rounded-full z-[99];
 }

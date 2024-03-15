@@ -9,7 +9,8 @@ const LatestNews = () => {
     });
 
     return () => {
-      console.log("cleanup");
+      setData([]);
+      console.log("clean");
     };
   }, []);
 

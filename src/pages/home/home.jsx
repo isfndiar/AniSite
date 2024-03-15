@@ -37,6 +37,9 @@ const ContinueWatching = () => {
   // Get ApI
   useEffect(() => {
     getAnimeContinueWatching((res) => setData(res.data.data));
+    return () => {
+      setData([]);
+    };
   }, []);
   return (
     <div className="grid sm:grid-cols-2 gap-x-2 grid-cols-1 gap-y-3   w-full  ">

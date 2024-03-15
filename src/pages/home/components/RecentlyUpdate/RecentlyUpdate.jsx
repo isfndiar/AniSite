@@ -43,6 +43,9 @@ const Main = () => {
 
   useEffect(() => {
     getAnimeRecently((res) => setData(res), activeIndex);
+    return () => {
+      setData([]);
+    };
   }, [activeIndex]);
 
   const handleClick = (page) => {
