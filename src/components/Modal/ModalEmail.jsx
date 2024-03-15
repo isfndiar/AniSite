@@ -1,6 +1,6 @@
 import Modal from "@/layouts/ModalLayouts";
 import FormModal from "../Form/FormModal";
-import FieldSet from "../Form/Fieldset";
+import FieldSet from "../Form/FieldSet";
 import Input from "../Input/Input";
 
 const ModalEmail = (props) => {
