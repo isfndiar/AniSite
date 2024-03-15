@@ -1,7 +1,7 @@
 import Modal from "@/layouts/ModalLayouts";
 import Input from "../Input/Input";
 import FormModal from "../Form/FormModal";
-import FieldSet from "../Form/Fieldset";
+import FieldSet from "../Form/FieldSet";
 
 const ModalUsername = (props) => {
   const { addData, handleCancel } = props;
