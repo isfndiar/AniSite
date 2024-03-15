@@ -16,8 +16,14 @@ const ProfilePage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const addData = (data) => {
-    setValue(data.value);
+  // get modal username
+  const dataUsername = (data) => {
+    setValue(data.firstname + " " + data.lastname);
+    setOpenModal(data.modal);
+  };
+  // get modal Email
+  const dataEmail = (data) => {
+    setEmail(data.email);
     setOpenModal(data.modal);
   };
 
@@ -27,24 +33,31 @@ const ProfilePage = () => {
   };
   return (
     <div className=" w-full px-10 text-white mt-24">
-      {openModal && idModal == "name" ? (
-        <ModalUsername
-          addData={addData}
-          handleCancel={() => setOpenModal(false)}
-        />
-      ) : openModal && idModal == "email" ? (
-        <ModalEmail handleCancel={() => setOpenModal(false)} />
-      ) : null}
+      {/* modal pop up */}
+      <div>
+        {openModal && idModal == "name" ? (
+          <ModalUsername
+            addData={dataUsername}
+            handleCancel={() => setOpenModal(false)}
+          />
+        ) : openModal && idModal == "email" ? (
+          <ModalEmail
+            addData={dataEmail}
+            handleCancel={() => setOpenModal(false)}
+          />
+        ) : null}
+      </div>
+
       <h1 className="text-2xl font-semibold">Profile Account</h1>
       <Card className="w-full max-w-md sm:max-w-full mt-6 bg-gray-800">
-        <head className="flex items-center gap-3 border-b pb-5 w-full">
+        <header className="flex items-center gap-3 border-b pb-5 w-full">
           <div
             onClick={() => setPP((x) => !x)}
             className={`${
               photoProfile
                 ? "fixed-center bg-black bg-opacity-35 z-[99] "
                 : "bg-black rounded-full overflow-hidden w-20 h-20"
-            } transition-all`}
+            } transition-all cursor-pointer`}
           >
             <img
               src="photoprofile1.jpg"
@@ -54,7 +67,7 @@ const ProfilePage = () => {
             />
           </div>
           <h5 className="text-xl">Personal Information</h5>
-        </head>
+        </header>
         <div id="subhead" className="text-sm font-light border-b pb-3 ">
           The information below only data dummy. database has not integrated
         </div>
@@ -84,7 +97,7 @@ const UserDetail = ({ handleClick, title, value, id }) => {
       onClick={() => handleClick(id)}
       className="flex justify-between items-center group  cursor-pointer"
     >
-      <div className="group-hover:text-slate-400 flex flex-col sm:flex-row sm:justify-between  w-1/2">
+      <div className="group-hover:text-slate-400 flex flex-col sm:flex-row sm:justify-between sm:items-center items-start  w-1/2">
         <p id={id}>{title}</p>
         <p>{value}</p>
       </div>
