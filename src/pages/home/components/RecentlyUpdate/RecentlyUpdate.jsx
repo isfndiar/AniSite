@@ -55,19 +55,17 @@ const Main = () => {
   return (
     <>
       <div className="flex flex-wrap gap-x-5 gap-y-10 justify-center  mt-10 ">
-        {data
-          .map((item, i) => (
-            <Card
-              key={item.mal_id + crypto.randomUUID()}
-              id={item.mal_id}
-              src={item.images.jpg.image_url}
-              alt={item.title}
-              title={item.title}
-              episodes={item.episodes ? item.episodes : "-"}
-              score={item.score ? item.score : "-"}
-            />
-          ))
-          .splice(0, 8)}
+        {data.map((item, i) => (
+          <Card
+            key={item.mal_id + crypto.randomUUID()}
+            id={item.mal_id}
+            src={item.images.jpg.image_url}
+            alt={item.title}
+            title={item.title}
+            episodes={item.episodes ? item.episodes : "-"}
+            score={item.score ? item.score : "-"}
+          />
+        ))}
       </div>
       <Pagination pageIndex={handleClick} />
     </>

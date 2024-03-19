@@ -1,4 +1,23 @@
 # Anime Website for everyone
 
-Thanks to god, family and anyone
-This UI from ([behance.net](https://www.behance.net/gallery/188208501/Anime-website))
+## Technology :
+
+- React.js
+- Tailwind
+
+## library
+
+- flowbite-react
+- react feather ( icon )
+- vercel ( configuration )
+- react-router-dom for Router
+
+## api
+
+- Anime : https://jikan.moe
+
+## UI
+
+https://www.behance.net/gallery/188208501/Anime-website
+
+etc.

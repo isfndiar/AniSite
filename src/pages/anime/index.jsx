@@ -1,21 +1,29 @@
-import { useState } from "react";
-import Card from "../../components/Card";
-import { Link } from "react-router-dom";
+import CardVideo from "./components/CardVideo";
+import { useEffect, useState } from "react";
+import { getAnimeRandom } from "@/services/animelist.service";
+
 const Anime = () => {
   const [data, setData] = useState([]);
-  const [istest, setIsTest] = useState(
-    Array(20)
-      .fill()
-      .map((_, i) => i + 1)
-  );
+  useEffect(() => {
+    getAnimeRandom((res) => {
+      setData(res);
+    });
+  }, []);
 
+  // window on load  to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <div className="md:flex items-start  md:px-3 px-3   mt-10   ">
-      <div className="flex md:gap-7 gap-y-4 flex-wrap justify-around mt-10 ">
-        {istest.map((_, i) => (
-          <Link key={i + crypto.randomUUID()} to={`/anime/${i}`}>
-            <Card id={i} src={"./src/assets/bgAuth.png"} alt={"sfsa"} />
-          </Link>
+    <div className="w-full sm:px-10 px-7  mt-24 mb-3">
+      <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-3 sm:gap-y-3 w-full ">
+        {data.map((item) => (
+          <CardVideo
+            key={item.mal_id}
+            title={item?.title}
+            img={item?.images?.jpg?.image_url}
+            episodes={item?.mal_id}
+          />
         ))}
       </div>
     </div>

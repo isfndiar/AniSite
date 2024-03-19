@@ -7,7 +7,7 @@ import LatestNews from "./components/LatestNew";
 import Pagination from "../../components/Pagination/Pagination";
 import RecentlyUpdate from "./components/RecentlyUpdate/RecentlyUpdate";
 import Header from "../../components/Header";
-const CardText = lazy(() => import("../../components/Card_text/CardText"));
+const CardText = lazy(() => import("@/components/Card_text/CardText"));
 
 const HomePage = () => {
   return (

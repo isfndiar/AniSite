@@ -60,12 +60,12 @@ export default function Navbar() {
 
 const NavbarMobileResponsive = ({ isOpen, handleClick }) => {
   return (
-    <>
+    <div>
       {isOpen && (
         <>
           <ListMenu
             classname={
-              "w-1/2 fixed text-3xl flex justify-center items-center flex-col gap-3 bg-slate-800 bottom-0 top-0 right-0 transition-all"
+              "w-full max-w-xs text-3xl flex justify-center items-center flex-col gap-3 bg-slate-800  transition-all fixed bottom-0 top-0 right-0"
             }
           />
           <button
@@ -76,7 +76,7 @@ const NavbarMobileResponsive = ({ isOpen, handleClick }) => {
           </button>
         </>
       )}
-    </>
+    </div>
   );
 };
 

@@ -3,7 +3,9 @@ import axios from "axios";
 // Function to get anime that the user is currently watching
 export const getAnimeContinueWatching = async (callback) => {
   try {
-    const res = await axios.get("https://api.jikan.moe/v4/anime?q=bleach&limit=4");
+    const res = await axios.get(
+      "https://api.jikan.moe/v4/anime?q=bleach&limit=4"
+    );
     // Callback to pass the response data
     callback(res);
   } catch (error) {
@@ -14,7 +16,9 @@ export const getAnimeContinueWatching = async (callback) => {
 // Function to get recently released anime
 export const getAnimeRecently = async (callback, page = 1) => {
   try {
-    const res = await axios.get(`https://api.jikan.moe/v4/anime?sfw=true&page=${page}`);
+    const res = await axios.get(
+      `https://api.jikan.moe/v4/anime?sfw=true&limit=8&page=${page}`
+    );
     // Callback to pass the response data
     callback(res.data.data);
   } catch (error) {
@@ -42,10 +46,9 @@ const getAnimeByEpisode = async (callback, id, episode) => {
     // callback to pass the response data
     callback(res.data.data);
   } catch (error) {
-    console.log("Error fetching Anime by episode",error);
+    console.log("Error fetching Anime by episode", error);
   }
 };
-
 
 // Data(array) anime for Slider
 export const getAnime = [
@@ -58,7 +61,6 @@ export const getAnime = [
         large: "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg",
       },
     },
-   
   },
   {
     node: {
@@ -69,7 +71,6 @@ export const getAnime = [
         large: "https://cdn.myanimelist.net/images/anime/1208/94745l.jpg",
       },
     },
-   
   },
   {
     node: {
@@ -80,7 +81,6 @@ export const getAnime = [
         large: "https://cdn.myanimelist.net/images/anime/1935/127974l.jpg",
       },
     },
-   
   },
   {
     node: {
@@ -99,8 +99,17 @@ export const getRecentAnimeRecommendations = async (callback) => {
   try {
     const res = await axios.get(`https://api.jikan.moe/v4/anime/1/news`);
     callback(res.data.data);
-    console.log(res.data.data);
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const getAnimeRandom = async (callback) => {
+  try {
+    const res = await axios.get(`https://api.jikan.moe/v4/anime/40748/videos`);
+    callback(res.data.data.episodes);
+    // console.log(res.data.data);
+  } catch (error) {
+    console.log("Not found ", error);
   }
 };
