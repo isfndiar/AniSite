@@ -15,7 +15,7 @@ const Anime = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="w-full sm:px-10 px-7  mt-24 mb-3">
+    <div className="w-full sm:px-10 px-7 mt-24 mb-3">
       <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-3 sm:gap-y-3 w-full ">
         {data.map((item) => (
           <CardVideo

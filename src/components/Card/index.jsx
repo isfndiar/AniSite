@@ -2,9 +2,18 @@ import { Link } from "react-router-dom";
 import Image from "./Image";
 import * as Icon from "react-feather";
 
-export default function Card({ src, alt, score, title, episodes, id }) {
+export default function Card({
+  src,
+  alt,
+  score,
+  title,
+  episodes,
+  id,
+  manga,
+  chapter,
+}) {
   return (
-    <div className=" w-full max-w-[170px] ease-in-out transition-all duration-500 rounded-3xl  group relative z-0">
+    <div className=" w-full max-w-[170px] ease-in-out transition-all duration-500 rounded-3xl  group relative z-0 text-white">
       <Image
         src={src}
         alt={alt}
@@ -15,10 +24,10 @@ export default function Card({ src, alt, score, title, episodes, id }) {
           {title.length > 20 ? title.substring(0, 18) + ` ...` : title}
         </h1>
         <Link
-          to={`/anime/anime-detail/${id}`}
+          to={manga ? `/manga/${id}` : `/anime/anime-detail/${id}`}
           className="flex justify-between items-center text-sm hover:text-gray-200"
         >
-          {episodes} episode
+          {manga ? chapter + " chapter" : episodes + " episode"}
           <span className="flex items-center">
             <Icon.Star color="yellow" fill="yellow" size={12} />
             {score}

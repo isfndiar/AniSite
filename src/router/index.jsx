@@ -4,7 +4,7 @@ import ErrorPage from "../pages/404";
 import LoginPage from "../pages/auth/login";
 import RegisterPage from "../pages/auth/register";
 import Anime from "../pages/anime/";
-import Manga from "../pages/manga";
+import Manga from "../pages/manga/manga";
 import AnimeByID from "../pages/anime/AnimeByID";
 import AnimeByEpisodePage from "../pages/anime/animeByEpisode";
 import TestPage from "../pages/test/components.test";
