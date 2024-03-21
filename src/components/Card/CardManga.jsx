@@ -1,32 +1,22 @@
 import { Link } from "react-router-dom";
 import * as Icon from "react-feather";
 
-export default function Card({
-  src,
-  alt,
-  score,
-  title,
-  episodes,
-  id,
-  manga,
-  chapter,
-}) {
+export default function CardManga({ src, alt, score, title, id, chapter }) {
   return (
     <div className=" w-full max-w-[170px] ease-in-out transition-all duration-500 rounded-3xl  group relative z-0 text-white">
-      <Image
+      <Header
         src={src}
         alt={alt}
         style={{ borderRadius: "1rem", height: "250px" }}
+        title={title}
+        id={id}
       />
       <section className="flex flex-col">
-        <h1 className="text-md font-semibold">
-          {title.length > 20 ? title.substring(0, 18) + ` ...` : title}
-        </h1>
         <Link
-          to={manga ? `/manga/${id}` : `/anime/anime-detail/${id}`}
+          to={`/manga/${title}/${id}`}
           className="flex justify-between items-center text-sm hover:text-gray-200"
         >
-          {manga ? chapter + " chapter" : episodes + " episode"}
+          {chapter} chapter
           <span className="flex items-center">
             <Icon.Star color="yellow" fill="yellow" size={12} />
             {score}
@@ -37,13 +27,18 @@ export default function Card({
   );
 }
 
-function Image({ src, alt, style }) {
+function Header({ src, alt, style, title, id }) {
   return (
-    <img
-      src={src}
-      alt={alt}
-      className="object-cover bg-no-repeat  h-full"
-      style={style}
-    />
+    <Link to={`/manga/${title}/${id}`}>
+      <img
+        src={src}
+        alt={alt}
+        className="object-cover bg-no-repeat  h-full"
+        style={style}
+      />
+      <h1 className="text-md font-semibold">
+        {title.length > 20 ? title.substring(0, 18) + ` ...` : title}
+      </h1>
+    </Link>
   );
 }

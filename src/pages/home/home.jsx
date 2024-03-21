@@ -2,7 +2,7 @@ import { Suspense, useEffect, lazy } from "react";
 import { useState } from "react";
 import { getAnimeContinueWatching } from "../../services/animelist.service";
 import SliderComponents from "./components/SliderComponents";
-import CardLoader from "../../Loader/CardLoader";
+import CardContinueLoader from "../../Loader/CardContinueLoader";
 import LatestNews from "./components/LatestNew";
 import Pagination from "../../components/Pagination/Pagination";
 import RecentlyUpdate from "./components/RecentlyUpdate/RecentlyUpdate";
@@ -44,7 +44,7 @@ const ContinueWatching = () => {
   return (
     <div className="grid sm:grid-cols-2 gap-x-2 grid-cols-1 gap-y-3   w-full  ">
       {data.map((item) => (
-        <Suspense fallback={<CardLoader />} key={item.mal_id}>
+        <Suspense fallback={<CardContinueLoader />} key={item.mal_id}>
           <CardText
             src={item.trailer.images.image_url}
             alt={item.title}

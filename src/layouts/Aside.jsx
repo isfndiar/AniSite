@@ -71,6 +71,9 @@ const Main = () => {
 
   return (
     <div className="flex flex-col mt-5 gap-5  text-sm">
+      <NavLink to={"/"} className={setIsOpen}>
+        <Icon.Grid size={20} /> Dashboard
+      </NavLink>
       <NavLink to={"/profile"} className={setIsOpen}>
         <Icon.User size={20} /> Profile
       </NavLink>
@@ -110,9 +113,7 @@ const Main = () => {
       <NavLink to={"/evaluation"} className={setIsOpen}>
         <Icon.Grid size={20} /> Global evaluation
       </NavLink>
-      <NavLink to={"/dates"} className={setIsOpen}>
-        <Icon.Calendar size={20} /> Episode Dates
-      </NavLink>
+
       <NavLink to={"/setting"} className={setIsOpen}>
         <Icon.Settings size={20} /> Setting
       </NavLink>

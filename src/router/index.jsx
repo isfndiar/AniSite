@@ -11,6 +11,7 @@ import TestPage from "../pages/test/components.test";
 import ProfilePage from "../pages/profile";
 import Aside from "../layouts/Aside";
 import ComingSoon from "../pages/ComingSoon";
+import MangaByTitle from "../pages/manga/_title";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
   {
     path: "/anime/:id/episodes/:episodes",
     element: <AnimeByEpisodePage />,
+  },
+  {
+    path: "/manga/:title/:id",
+    element: <MangaByTitle />,
   },
   {
     path: "/login",

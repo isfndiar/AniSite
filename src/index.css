@@ -15,6 +15,10 @@
   box-sizing: border-box;
 }
 
+body {
+  @apply bg-slate-900;
+}
+
 .bg_opacity-black {
   @apply z-0 after:absolute  after:left-0  after:right-0 after:top-0 after:bottom-0  after:content-[''] after:bg-black after:opacity-35;
 }
