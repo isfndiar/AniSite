@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft } from "react-feather";
+import { ArrowLeft, Star } from "react-feather";
 import { Link, useParams } from "react-router-dom";
 import { getMangaByID, getMangaData } from "../../services/manga.service";
-
+import Footer from "@/layouts/Footer";
 const MangaByTitle = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const { title, id } = useParams();
+  const [activeIndex, setActiveIndex] = useState(1);
+  const { genres, authors } = data;
   useEffect(() => {
     getMangaByID((res) => setData(res), id);
   }, [id]);
   useEffect(() => {
     console.log(data);
+    // console.log(genres);
   }, [data]);
   return (
     <div className="">
@@ -23,25 +26,68 @@ const MangaByTitle = () => {
       <h1 className="text-white text-3xl font-bold font-mono text-center mt-7">
         {title}
       </h1>
-      <div className="flex flex-col md:flex-row  mt-7 text-white">
+      <div className="flex flex-col md:flex-row  my-10 text-white justify-center">
         <img
-          src={data?.images?.jpg?.image_url}
+          src={data.images?.jpg?.image_url}
           alt=""
           width={300}
           className="self-center"
         />
-        <div className="px-5 mt-10">
-          <div className="text-center">info | sinopsis</div>
-          <div className="w-full bg-gray-600 rounded-xl p-3">
-            <PostContent header={"Rank"} content={"Uhuy"} />
-            <PostContent
-              header={"Rank"}
-              content={"Uhuy dslkslkfs sdaflkj   "}
+        <div className="px-5 mt-10  w-full max-w-[48rem]">
+          <div className="text-center flex gap-1 justify-center mb-2">
+            <Button
+              title={"Info"}
+              handleClick={() => setActiveIndex(1)}
+              classActive={activeIndex == 1 && "bg-white text-black"}
             />
-            <PostContent header={"Updating"} content={"Uhuy"} />
+            <Button
+              title={"Sinopsis"}
+              handleClick={() => setActiveIndex(2)}
+              classActive={activeIndex == 2 && "bg-white text-black"}
+            />
+          </div>
+          <div className="w-full  bg-gray-800 rounded-xl p-4 mb-2">
+            {activeIndex == 1 ? (
+              <div className="flex flex-col md:flex-row gap-10">
+                <div>
+                  <PostContent header={"type"} content={data?.type} />
+                  <PostContent
+                    header={"genres"}
+                    content={data?.genres?.map((item) => (
+                      <div key={item.mal_id}>{item.name}</div>
+                    ))}
+                  />
+                  <PostContent
+                    header={"Authors"}
+                    content={data?.authors?.map((item) => (
+                      <div key={item.mal_id}>{item.name}</div>
+                    ))}
+                  />
+                  <PostContent
+                    header={"Popularity"}
+                    content={data?.popularity}
+                  />
+                  <PostContent header={"chapters"} content={data?.chapters} />
+                </div>
+                <div className=" self-start md:self-end">
+                  <PostContent content={data?.status} header={"Status"} />
+                  <PostContent
+                    content={data?.published?.string}
+                    header={"Release"}
+                  />
+                  <div className="flex gap-3 mt-2">
+                    <Star fill="white" />
+                    {data?.scored}
+                  </div>
+                </div>
+              </div>
+            ) : activeIndex == 2 ? (
+              <div>{data?.synopsis}</div>
+            ) : null}
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
@@ -51,8 +97,19 @@ export default MangaByTitle;
 const PostContent = ({ header, content }) => {
   return (
     <div className="flex ">
-      <div className=" w-20 ">{header}</div>
-      <div>{content}</div>
+      <div className=" w-24 ">{header}</div>
+      <div className="flex flex-wrap gap-y-0 gap-2">{content}</div>
     </div>
+  );
+};
+
+const Button = ({ title, handleClick, classActive }) => {
+  return (
+    <button
+      onClick={handleClick}
+      className={`${classActive} px-5 h-10 rounded-full border border-transparent hover:border-white transition-all `}
+    >
+      {title}
+    </button>
   );
 };

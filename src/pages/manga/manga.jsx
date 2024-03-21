@@ -16,10 +16,30 @@ const Manga = () => {
     };
   }, [currentPage]);
 
-  useEffect;
+  const selectorTheme = {
+    layout: {
+      table: {
+        base: "text-sm text-gray-400",
+        span: "font-semibold text-white",
+      },
+    },
+    pages: {
+      previous: {
+        base: "ml-0 rounded-l-lg border  py-2 px-3 leading-tight  border-gray-700 bg-gray-800 text-gray-400 enabled:hover:bg-gray-700 enabled:hover:text-white",
+      },
+      next: {
+        base: "rounded-r-lg border  py-2 px-3 leading-tight  border-gray-700 bg-gray-800 text-gray-400 enabled:hover:bg-gray-700 enabled:hover:text-white",
+      },
+      selector: {
+        base: "w-12 border  py-2 leading-tight border-gray-700 bg-gray-800 text-gray-400 enabled:hover:bg-gray-700 enabled:hover:text-white",
+        active:
+          " hover:bg-cyan-100 hover:text-cyan-700 border-gray-700 bg-gray-700 text-white",
+      },
+    },
+  };
   return (
     <div className="mt-20 px-7 mb-2">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-2 gap-x-3 sm:gap-x-0">
         {data.map((item) => (
           <Suspense
             key={item.mal_id + crypto.randomUUID()}
@@ -39,11 +59,11 @@ const Manga = () => {
       </div>
       <div className="flex overflow-x-auto sm:justify-center my-7">
         <Pagination
+          theme={selectorTheme}
           currentPage={currentPage}
           totalPages={3519}
           onPageChange={onPageChange}
           showIcons
-          className="bg-gray-800 text-white"
         />
       </div>
     </div>
