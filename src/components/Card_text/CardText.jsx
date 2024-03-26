@@ -9,7 +9,7 @@ export default function CardText({
 }) {
   return (
     <div className=" md:max-w-[20rem] lg:max-w-[23rem]  w-full  ease-in-out transition-all duration-500  group relative z-0  ">
-      <Link to={`/anime/${id}/episodes/${episode}`}>
+      <Link to={`/anime/${id}`}>
         <header className="rounded-3xl overflow-hidden relative cursor-pointer ">
           <div className="bg_opacity-image"></div>
           <Icon.PlayCircle
@@ -25,8 +25,8 @@ export default function CardText({
             {title.length > 45 ? title.substring(0, 45) + ` ...` : title}
           </h3>
         </Link>
-        <Link to={`/anime/${id}/episodes/${episode}`}>
-          <p className="text-sm hover:text-gray-500">{episode} episode</p>
+        <Link to={`/anime/${id}`}>
+          <p className="text-sm hover:text-gray-500">{episode}</p>
         </Link>
       </footer>
     </div>

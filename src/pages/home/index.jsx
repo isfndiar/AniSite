@@ -1,11 +1,11 @@
 import { Suspense, useEffect, lazy } from "react";
 import { useState } from "react";
-import { getAnimeContinueWatching } from "../../services/animelist.service";
-import SliderComponents from "./components/SliderComponents";
+import { getAnimeRandom } from "../../services/animelist.service";
+import SliderComponents from "./components/home__SliderComponents";
 import CardContinueLoader from "../../Loader/CardContinueLoader";
-import LatestNews from "./components/LatestNew";
+import LatestNews from "./components/home__LastNew";
 import Pagination from "../../components/Pagination/Pagination";
-import RecentlyUpdate from "./components/RecentlyUpdate/RecentlyUpdate";
+import RecentlyUpdate from "./components/home__RecentlyUpdate";
 import Header from "../../components/Header";
 const CardText = lazy(() => import("@/components/Card_text/CardText"));
 
@@ -36,24 +36,26 @@ const ContinueWatching = () => {
   const [data, setData] = useState([]);
   // Get ApI
   useEffect(() => {
-    getAnimeContinueWatching((res) => setData(res.data.data));
+    getAnimeRandom((res) => setData(res));
     return () => {
       setData([]);
     };
   }, []);
   return (
     <div className="grid sm:grid-cols-2 gap-x-2 grid-cols-1 gap-y-3   w-full  ">
-      {data.map((item) => (
-        <Suspense fallback={<CardContinueLoader />} key={item.mal_id}>
-          <CardText
-            src={item.trailer.images.image_url}
-            alt={item.title}
-            title={item.title}
-            episode={item.episodes}
-            id={item.mal_id}
-          />
-        </Suspense>
-      ))}
+      {data
+        .map((item) => (
+          <Suspense fallback={<CardContinueLoader />} key={item.mal_id}>
+            <CardText
+              src={item?.images?.jpg?.image_url}
+              alt={item?.title}
+              title={item?.title}
+              episode={item?.episode}
+              id={item?.mal_id}
+            />
+          </Suspense>
+        ))
+        .slice(0, 4)}
     </div>
   );
 };

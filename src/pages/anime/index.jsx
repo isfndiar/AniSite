@@ -1,4 +1,4 @@
-import CardVideo from "./components/CardVideo";
+import CardVideo from "./components/anime__CardVideo";
 import { useEffect, useState } from "react";
 import { getAnimeRandom } from "@/services/animelist.service";
 

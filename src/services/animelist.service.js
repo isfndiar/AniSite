@@ -1,18 +1,5 @@
 import axios from "axios";
 
-// Function to get anime that the user is currently watching
-export const getAnimeContinueWatching = async (callback) => {
-  try {
-    const res = await axios.get(
-      "https://api.jikan.moe/v4/anime?q=bleach&limit=4"
-    );
-    // Callback to pass the response data
-    callback(res);
-  } catch (error) {
-    console.error("Error fetching continue watching anime:", error);
-  }
-};
-
 // Function to get recently released anime
 export const getAnimeRecently = async (callback, page = 1) => {
   try {
@@ -29,24 +16,11 @@ export const getAnimeRecently = async (callback, page = 1) => {
 // Function to get Anime by Id
 export const getAnimeByID = async (callback, id = 1) => {
   try {
-    const res = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
+    const res = await axios.get(`https://api.jikan.moe/v4/anime/${id}/full`);
     // callback to pass the response data
     callback(res.data.data);
   } catch (error) {
     console.log(error);
-  }
-};
-
-// Function to get Anime by Episode
-const getAnimeByEpisode = async (callback, id, episode) => {
-  try {
-    const res = await axios.get(
-      `https://api.jikan.moe/v4/anime/${id}/episodes/${episode}`
-    );
-    // callback to pass the response data
-    callback(res.data.data);
-  } catch (error) {
-    console.log("Error fetching Anime by episode", error);
   }
 };
 
@@ -95,9 +69,9 @@ export const getAnime = [
 ];
 
 // Function to get Recent Anime Recommendations
-export const getRecentAnimeRecommendations = async (callback) => {
+export const getRecentAnimeRecommendations = async (callback, id = 1) => {
   try {
-    const res = await axios.get(`https://api.jikan.moe/v4/anime/1/news`);
+    const res = await axios.get(`https://api.jikan.moe/v4/anime/${id}/news`);
     callback(res.data.data);
   } catch (error) {
     console.log(error);

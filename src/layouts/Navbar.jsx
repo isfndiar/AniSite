@@ -112,9 +112,7 @@ const ListMenu = ({ classname }) => {
       <NavLink to={"/news"} className={setIsOpen}>
         News
       </NavLink>
-      <NavLink to={"/movies"} className={setIsOpen}>
-        Movies
-      </NavLink>
+      <div className={`px-2 py-2 text-gray-500 cursor-default`}>Movies</div>
     </div>
   );
 };

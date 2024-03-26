@@ -1,17 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "../pages/home/home";
+import HomePage from "../pages/home/";
 import ErrorPage from "../pages/404";
 import LoginPage from "../pages/auth/login";
 import RegisterPage from "../pages/auth/register";
 import Anime from "../pages/anime/";
 import Manga from "../pages/manga/manga";
-import AnimeByID from "../pages/anime/AnimeByID";
-import AnimeByEpisodePage from "../pages/anime/animeByEpisode";
+import AnimeByID from "../pages/anime/_id";
 import TestPage from "../pages/test/components.test";
 import ProfilePage from "../pages/profile";
 import Aside from "../layouts/Aside";
 import ComingSoon from "../pages/ComingSoon";
 import MangaByTitle from "../pages/manga/_title";
+import NewsPage from "../pages/news";
+import GenrePage from "../pages/anime/Genre";
 
 export const router = createBrowserRouter([
   {
@@ -32,8 +33,16 @@ export const router = createBrowserRouter([
         element: <Manga />,
       },
       {
+        path: "/news",
+        element: <NewsPage />,
+      },
+      {
         path: "/profile",
         element: <ProfilePage />,
+      },
+      {
+        path: "/anime/genre",
+        element: <GenrePage />,
       },
     ],
   },
@@ -41,10 +50,7 @@ export const router = createBrowserRouter([
     path: "/anime/:id",
     element: <AnimeByID />,
   },
-  {
-    path: "/anime/:id/episodes/:episodes",
-    element: <AnimeByEpisodePage />,
-  },
+
   {
     path: "/manga/:title/:id",
     element: <MangaByTitle />,

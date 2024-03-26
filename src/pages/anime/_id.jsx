@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, Star } from "react-feather";
 import { Link, useParams } from "react-router-dom";
-import { getMangaByID } from "../../services/manga.service";
 import Footer from "@/layouts/Footer";
-const MangaByTitle = () => {
+import { getAnimeByID } from "../../services/animelist.service";
+const AnimeByID = () => {
   const { title, id } = useParams();
   const [data, setData] = useState([]);
   const [activeIndex, setActiveIndex] = useState(1);
   useEffect(() => {
-    getMangaByID((res) => setData(res), id);
+    getAnimeByID((res) => setData(res), id);
   }, [id]);
 
   return (
     <div className="">
       <Link
-        to={`/manga`}
+        to={`/`}
         className="absolute top-12 left-9 hover:border hover:border-white border border-transparent hover:p-1 p-1 rounded-full "
       >
         <ArrowLeft color="white" />
@@ -24,7 +24,7 @@ const MangaByTitle = () => {
       </h1>
       <div className="flex flex-col md:flex-row  my-10 text-white justify-center">
         <img
-          src={data.images?.jpg?.image_url}
+          src={data?.images?.jpg?.image_url}
           alt=""
           width={300}
           className="self-center"
@@ -44,7 +44,7 @@ const MangaByTitle = () => {
           </div>
           <div className="w-full  bg-gray-800 rounded-xl p-4 mb-2">
             {activeIndex == 1 ? (
-              <div className="flex flex-col md:flex-row gap-10">
+              <div className="    ">
                 <section id="section-1">
                   <PostContent header={"type"} content={data?.type} />
                   <PostContent
@@ -54,8 +54,8 @@ const MangaByTitle = () => {
                     ))}
                   />
                   <PostContent
-                    header={"Authors"}
-                    content={data?.authors?.map((item) => (
+                    header={"Producers"}
+                    content={data?.producers?.map((item) => (
                       <div key={item.mal_id}>{item.name}</div>
                     ))}
                   />
@@ -63,18 +63,7 @@ const MangaByTitle = () => {
                     header={"Popularity"}
                     content={data?.popularity}
                   />
-                  <PostContent header={"chapters"} content={data?.chapters} />
-                </section>
-                <section id="section-2" className=" self-start md:self-end">
-                  <PostContent content={data?.status} header={"Status"} />
-                  <PostContent
-                    content={data?.published?.string}
-                    header={"Release"}
-                  />
-                  <div className="flex gap-3 mt-2">
-                    <Star fill="white" />
-                    {data?.scored}
-                  </div>
+                  <PostContent header={"episodes"} content={data?.episodes} />
                 </section>
               </div>
             ) : activeIndex == 2 ? (
@@ -88,12 +77,12 @@ const MangaByTitle = () => {
   );
 };
 
-export default MangaByTitle;
+export default AnimeByID;
 
 const PostContent = ({ header, content }) => {
   return (
     <div className="flex ">
-      <div className=" w-24 ">{header}</div>
+      <div className=" w-28  ">{header}</div>
       <div className="flex flex-wrap gap-y-0 gap-2">{content}</div>
     </div>
   );
