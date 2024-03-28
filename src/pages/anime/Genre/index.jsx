@@ -21,11 +21,11 @@ const GenrePage = () => {
   return (
     <div className="mt-20 px-7 mb-2 text-white">
       <div className="flex gap-3 flex-wrap py-10 ">
-        {data.map((item) => (
+        {/* {data.map((item) => (
           <div onClick={() => handleClick(item?.name)} key={item?.mal_id}>
             {item?.name}
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );

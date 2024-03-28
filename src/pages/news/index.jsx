@@ -41,7 +41,7 @@ const NewsPage = () => {
             horizontal
           >
             <ArrowUpRight className="absolute top-1 right-1 sm:top-3 sm:right-3 " />
-            <h5 className=" text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className=" text-xl font-bold tracking-tight  text-white">
               {item?.title}
             </h5>
             <p className="font-normal sm:text-lg  text-gray-700 dark:text-gray-400 line-clamp-5 sm:line-clamp-none">
