@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Heart } from "react-feather";
 import PropTypes from "prop-types";
 const StarRating = ({ onSetRating, color = "pink", max = 0, size = 5 }) => {
@@ -7,8 +7,10 @@ const StarRating = ({ onSetRating, color = "pink", max = 0, size = 5 }) => {
 
   const handleClick = (item) => {
     setRating(item);
-    onSetRating(rating);
   };
+  useEffect(() => {
+    onSetRating(rating);
+  }, [onSetRating, rating]);
   return (
     <>
       <div className="flex gap-1">

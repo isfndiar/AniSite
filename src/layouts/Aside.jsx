@@ -77,7 +77,7 @@ const Main = () => {
       <NavLink to={"/profile"} className={setIsOpen}>
         <Icon.User size={20} /> Profile
       </NavLink>
-      <NavLink to={"/anime/genre"} className={setIsOpen}>
+      <NavLink to={"/genre"} className={setIsOpen}>
         <Icon.File size={20} /> Genres
       </NavLink>
       <div className="Dropdown-Menu">

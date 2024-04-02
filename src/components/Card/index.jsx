@@ -12,7 +12,7 @@ export default function Card({
   chapter,
 }) {
   return (
-    <div className=" w-full max-w-[170px] ease-in-out transition-all duration-500 rounded-3xl  group relative z-0 text-white">
+    <div className=" w-full max-w-[170px] ease-in-out transition-all duration-500 rounded-3xl  group z-0 text-white relative">
       <Link to={`anime/${id}`}>
         <Image
           src={src}
@@ -44,7 +44,7 @@ function Image({ src, alt, style }) {
     <img
       src={src}
       alt={alt}
-      className="object-cover bg-no-repeat  h-full"
+      className="object-cover bg-no-repeat w-full  h-full"
       style={style}
     />
   );

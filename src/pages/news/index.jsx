@@ -44,7 +44,7 @@ const NewsPage = () => {
             <h5 className=" text-xl font-bold tracking-tight  text-white">
               {item?.title}
             </h5>
-            <p className="font-normal sm:text-lg  text-gray-700 dark:text-gray-400 line-clamp-5 sm:line-clamp-none">
+            <p className="font-normal sm:text-lg  text-gray-400 line-clamp-5 sm:line-clamp-none">
               {item?.excerpt}
             </p>
           </Card>

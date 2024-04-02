@@ -4,12 +4,15 @@ import { Link, useParams } from "react-router-dom";
 import { getMangaByID } from "@/services/manga.service";
 import Footer from "@/layouts/Footer";
 import StarRating from "@/components/StarRating/StarRating";
+import { useDispatch } from "react-redux";
+import { favoriteItem } from "../../redux/favoriteSlice";
 const MangaByTitle = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [activeIndex, setActiveIndex] = useState(1);
   const [userRating, setUserRating] = useState(0);
   const [isClick, setIsClick] = useState(false);
+  const dispatch = useDispatch();
   useEffect(() => {
     getMangaByID((res) => setData(res), id);
   }, [id]);
@@ -17,19 +20,15 @@ const MangaByTitle = () => {
   const handleClick = () => {
     setIsClick((isClick) => !isClick);
 
-    const fetchDataToFavorite = {
+    const getFavorite = {
       id,
       userRating,
       img: data?.images?.jpg?.image_url,
       title: data?.title,
     };
-
+    dispatch(favoriteItem(getFavorite));
     // localStorage.setItem("favorite", JSON.stringify(fetchDataToFavorite));
-    console.log(fetchDataToFavorite);
   };
-  useEffect(() => {
-    if (isClick) alert("Add to Your Favorite :D");
-  }, [isClick]);
 
   return (
     <div className="">

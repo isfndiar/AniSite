@@ -2,7 +2,9 @@ import axios from "axios";
 
 export const getAnimeGenre = async (callback) => {
   try {
-    const res = await axios.get(`https://api.jikan.moe/v4/genres/anime`);
+    const res = await axios.get(
+      `https://api.jikan.moe/v4/genres/anime?filter=genres`
+    );
     callback(res.data.data);
     // console.log(res.data.data);
   } catch (error) {

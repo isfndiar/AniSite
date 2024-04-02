@@ -12,7 +12,8 @@ import Aside from "../layouts/Aside";
 import ComingSoon from "../pages/ComingSoon";
 import MangaByTitle from "../pages/manga/_title";
 import NewsPage from "../pages/news";
-import GenrePage from "../pages/anime/Genre";
+import GenrePage from "../pages/Genre";
+import FavoritePage from "../pages/favorite";
 
 export const router = createBrowserRouter([
   {
@@ -41,8 +42,12 @@ export const router = createBrowserRouter([
         element: <ProfilePage />,
       },
       {
-        path: "/anime/genre",
+        path: "/genre",
         element: <GenrePage />,
+      },
+      {
+        path: "/favorite",
+        element: <FavoritePage />,
       },
     ],
   },
@@ -69,10 +74,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "/mylist",
-    element: <ComingSoon />,
-  },
-  {
-    path: "/favorite",
     element: <ComingSoon />,
   },
   {

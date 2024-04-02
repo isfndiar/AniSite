@@ -32,10 +32,7 @@ export default function Navbar() {
         />
 
         {/* Navbar-List Mobile Responsive */}
-        <NavbarMobileResponsive
-          handleClick={() => setIsOpen(false)}
-          isOpen={isOpen}
-        />
+        <NavPhoneRes handleClick={() => setIsOpen(false)} isOpen={isOpen} />
         {/* Auth, Menu, Search Button */}
         <div className="flex items-center  gap-3">
           <Icon.Search
@@ -58,20 +55,13 @@ export default function Navbar() {
   );
 }
 
-const NavbarMobileResponsive = ({ isOpen, handleClick }) => {
+const NavPhoneRes = ({ isOpen, handleClick }) => {
   return (
     <div>
       {isOpen && (
         <>
-          <ListMenu
-            classname={
-              "w-full max-w-xs text-3xl flex justify-center items-center flex-col gap-3 bg-slate-800  transition-all fixed bottom-0 top-0 right-0"
-            }
-          />
-          <button
-            className="z-30 text-3xl font-semibold  absolute right-10 top-10 "
-            onClick={handleClick}
-          >
+          <ListMenu classname={styles.mobile.list} />
+          <button className={styles.mobile.button} onClick={handleClick}>
             X
           </button>
         </>
@@ -115,4 +105,11 @@ const ListMenu = ({ classname }) => {
       <div className={`px-2 py-2 text-gray-500 cursor-default`}>Movies</div>
     </div>
   );
+};
+
+const styles = {
+  mobile: {
+    button: "z-30 text-3xl font-semibold  absolute right-10 top-10 ",
+    list: "w-full max-w-xs text-3xl flex justify-center items-center flex-col gap-3 bg-slate-800  transition-all fixed bottom-0 top-0 right-0",
+  },
 };
